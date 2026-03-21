@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>student-handbook-core-plus-addon</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">student-handbook-core-plus-addon</h1>
+</header>
+<h1 id="day-2-your-teams-first-project-ship-your-ai-sales-engine">Day 2: Your Team’s First Project — Ship Your AI Sales Engine</h1>
+<blockquote>
+<p><strong>Which handbook is this?</strong> This is the <strong>Core + Add-on</strong> version — 4 core steps with a lighter mandatory scope, then a Power Ups menu of optional enhancements. Token-friendly — works well on the <strong>Pro plan</strong>. Great if you want to go at your own pace, get each step right, and explore extras only if time and tokens allow. If you’re on the Max plan and want the full experience with everything mandatory, use <strong>student-handbook-full.md</strong> instead.</p>
+</blockquote>
+<p><strong>Duration:</strong> Full day (10:00 AM – 5:00 PM) | <strong>Four core steps, one live URL with an AI agent by 4:00 PM — then power it up</strong></p>
+<hr />
+<h2 id="what-youre-building-today">What You’re Building Today</h2>
+<p>Yesterday you built a team. Today you put that team to work and ship a <strong>branded website with an AI sales agent</strong> — live on the internet, working 24/7.</p>
+<p>By the end of today, you’ll have:</p>
+<ol type="1">
+<li>A professional branded website — deployed to a live URL</li>
+<li>An AI chatbot that answers visitors <strong>in your voice</strong></li>
+<li>A proposal engine that generates <strong>personalized PDFs</strong> per visitor</li>
+<li>Automatic email delivery — proposals emailed to visitors with attachments</li>
+<li>Lead alerts on your phone — Telegram notification with qualification score</li>
+</ol>
+<p><strong>Not a static page. Not a chatbox. An agent that qualifies leads, writes proposals in your voice, emails them, and alerts you — all without you touching anything.</strong></p>
+<hr />
+<h2 id="what-you-need-from-day-1">What You Need From Day 1</h2>
+<p>Today’s build runs on everything you built yesterday. Here’s a quick check:</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 26%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Day 1 Artifact</th>
+<th>Where it is</th>
+<th>Day 2 uses it for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CLAUDE.md</strong></td>
+<td>Root of your project</td>
+<td>Chatbot system prompt — answers visitors using your context</td>
+</tr>
+<tr class="even">
+<td><strong>“What I Offer” section</strong></td>
+<td>Inside CLAUDE.md</td>
+<td>Chatbot explains your services. Proposals scope recommendations.</td>
+</tr>
+<tr class="odd">
+<td><strong>Voice fingerprint</strong></td>
+<td>CLAUDE.md “My Writing Voice” section</td>
+<td>Chatbot speaks like you. Proposals written like you. Emails sound like you.</td>
+</tr>
+<tr class="even">
+<td><strong>Comms Lead skill</strong></td>
+<td><code>.claude/skills/write-in-my-voice/</code></td>
+<td>Generates copy for your website, proposal text, email drafts</td>
+</tr>
+<tr class="odd">
+<td><strong>Research output</strong></td>
+<td><code>research/synthesis.md</code></td>
+<td>Competitive positioning on your site. Informs proposal content.</td>
+</tr>
+<tr class="even">
+<td><strong>Advisory board pattern</strong></td>
+<td><code>evaluation/TEMPLATE-advisory-board.md</code></td>
+<td>Expert roast panel — available in Power Ups to polish your site before shipping</td>
+</tr>
+<tr class="odd">
+<td><strong>Chief of Staff triage rules</strong></td>
+<td>CLAUDE.md “Chief of Staff Operating Manual”</td>
+<td>Lead scoring: HIGH/MEDIUM/LOW using the same framework</td>
+</tr>
+<tr class="even">
+<td><strong>Telegram bot token</strong></td>
+<td>From Day 1 setup</td>
+<td>Lead alerts — your phone buzzes when visitors request proposals</td>
+</tr>
+<tr class="odd">
+<td><strong>Gmail account</strong></td>
+<td>Created during Day 1 pre-work</td>
+<td>Chief of Staff email triage. Day 2 email sending uses Resend (set up in Step 3C).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quick-verification-5-min">Quick verification (5 min)</h3>
+<p>Run through this before we start:</p>
+<pre><code>Read my CLAUDE.md. Confirm you can see:
+1. Who I am and what I do
+2. My &quot;What I Offer&quot; section (services, expertise, typical clients)
+3. My &quot;Writing Voice&quot; section (tone, patterns, quirks)
+4. My &quot;Chief of Staff Operating Manual&quot; (triage rules, key people)
+
+Tell me if anything is missing or too thin for building a website and chatbot today.</code></pre>
+<p>If something’s missing, spend 5 minutes enriching it now. It’s easier to add context now than to debug a generic-sounding chatbot later.</p>
+<hr />
+<h2 id="schedule">Schedule</h2>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 17%" />
+<col style="width: 42%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>What</th>
+<th>What’s Happening</th>
+<th>Day 1 Team Used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10:00 – 10:15</td>
+<td>Kickoff</td>
+<td>Recap, verify, set the stage</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>10:15 – 12:10</td>
+<td><strong>Step 1: Brand &amp; Design</strong></td>
+<td>Brief → 2 copy variations → design → review → logo → research polish</td>
+<td>Comms Lead (voice), Researcher (positioning)</td>
+</tr>
+<tr class="odd">
+<td>12:10 – 12:20</td>
+<td><em>Break</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12:20 – 1:05</td>
+<td><strong>Step 2: The Chatbot</strong></td>
+<td>Chat widget + Claude API + voice fingerprint → test locally</td>
+<td>Comms Lead (voice), CLAUDE.md (context)</td>
+</tr>
+<tr class="odd">
+<td>1:05 – 1:45</td>
+<td><em>Lunch</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1:45 – 2:40</td>
+<td><strong>Step 3: Proposal Engine</strong></td>
+<td>Agentic tool use → PDF → email → lead alert → test locally</td>
+<td>Chief of Staff (triage rules), Telegram bot (alerts)</td>
+</tr>
+<tr class="odd">
+<td>2:40 – 2:50</td>
+<td><em>Break</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2:50 – 4:00</td>
+<td><strong>Step 4: Deploy &amp; Demo</strong></td>
+<td>Push to GitHub → deploy to Vercel → add env vars → debug → live demo</td>
+<td>Everything</td>
+</tr>
+<tr class="odd">
+<td>4:00 – 4:30</td>
+<td><strong>Power Ups</strong></td>
+<td>Roast &amp; Fix, lead storage, second design</td>
+<td>Advisory Board, Supabase</td>
+</tr>
+<tr class="even">
+<td>4:30 – 4:55</td>
+<td><strong>Show &amp; Tell</strong></td>
+<td>Live demos, live URLs, war stories</td>
+<td>Everything</td>
+</tr>
+<tr class="odd">
+<td>4:55 – 5:00</td>
+<td><strong>Close</strong></td>
+<td>What you built. Monday habit.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The core path gets you to a live URL with a working AI agent by 4:00.</strong> Power Ups are for polishing and extending. Show &amp; Tell is where you demo what you shipped.</p>
+<hr />
+<h2 id="verify-the-frontend-design-skill">Verify the Frontend Design Skill</h2>
+<p>Today’s build generates production-quality HTML. The <code>frontend-design</code> skill gives Claude the design knowledge to produce polished, professional layouts. You installed it during Day 1 — let’s verify it’s active.</p>
+<p>Run:</p>
+<pre><code>/frontend-design</code></pre>
+<p>Then ask Claude:</p>
+<pre><code>Confirm you have the frontend-design skill loaded</code></pre>
+<p>If Claude confirms the skill is active, you’re set. Move on to Getting Started.</p>
+<blockquote>
+<p><strong>Didn’t install it on Day 1?</strong> Follow these steps:</p>
+<ol type="1">
+<li>Run: <code>/plugin marketplace add anthropics/claude-code</code></li>
+<li>Run: <code>/plugin install frontend-design@anthropics-claude-code</code></li>
+<li>Exit Claude (<code>/exit</code>) and restart (<code>claude</code>) — the skill loads on startup</li>
+<li>Run <code>/frontend-design</code> and verify it’s active</li>
+</ol>
+<p>If it still won’t load, skip it — your site will work fine, just with less design polish.</p>
+</blockquote>
+<hr />
+<h2 id="getting-started">Getting Started</h2>
+<p>Open your terminal and navigate to today’s build folder:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/thecrux-bootcamp/day2-guided-build</span></code></pre></div>
+<p>Copy your Day 1 artifacts into this folder — everything your team built yesterday:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/thecrux-bootcamp/day1-guided-build/CLAUDE.md .</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/thecrux-bootcamp/day1-guided-build/.claude .</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/thecrux-bootcamp/day1-guided-build/research .</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/thecrux-bootcamp/day1-guided-build/evaluation .</span></code></pre></div>
+<p>Start Claude:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> The <code>my-site/</code> subfolder doesn’t exist yet — Claude will create it during Step 1 when you build your website.</p>
+</blockquote>
+<hr />
+<h2 id="kickoff-1000-1015">Kickoff (10:00 – 10:15)</h2>
+<p>Yesterday you built a team — researcher, comms lead, advisory board, chief of staff. Today you give that team a real project.</p>
+<p><strong>The brief:</strong> Build a branded website that works as your AI sales agent. A visitor finds your site, chats with an AI that sounds like you, describes what they need, and receives a personalized proposal in their inbox — all without you lifting a finger. Your phone buzzes with a lead alert. You review the proposal. You approve it. The visitor gets it. That’s what we’re shipping today.</p>
+<p>Make sure you have your <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code> from Day 1 handy — you’ll need them in Step 3 for lead alerts.</p>
+<hr />
+<h2 id="step-1-brand-design-90-min">Step 1: Brand &amp; Design (90 min)</h2>
+<p><strong>What you’re building:</strong> Your branded website — professional, polished, ready to deploy.</p>
+<p><strong>Day 1 artifacts used:</strong> CLAUDE.md (identity + offerings), voice fingerprint (copy tone), research output (competitive positioning)</p>
+<h3 id="a-the-brief-10-min">1A: The Brief (10 min)</h3>
+<p>Tell Claude what you’re building. Be specific — the more context, the better the output.</p>
+<pre><code>I want to build a professional branded website for my practice/business.
+Read my CLAUDE.md for who I am, what I offer, and my voice.
+Read research/synthesis.md for competitive context.
+
+Based on this, create a brief for my website:
+- What the hero section should say (in MY voice, not a template)
+- What services/offerings to highlight (from my &quot;What I Offer&quot; section)
+- What makes me different (from my research + CLAUDE.md)
+- What the CTA should be
+- Who the target visitor is
+
+Don&#39;t write the copy yet — just the brief. I want to review before we generate.</code></pre>
+<p>Review the brief. Adjust anything that feels off. This is the blueprint for everything.</p>
+<h3 id="b-two-copy-variations-15-min">1B: Two Copy Variations (15 min)</h3>
+<p>Now generate two different copywriting angles — in parallel. Same brief, different approaches.</p>
+<pre><code>Based on the brief we just created, generate TWO complete copy variations
+for my website. Each should be a full set of copy (hero, about, services,
+testimonials placeholders, CTA, contact).
+
+Variation A: Lead with my story — personal, founder-narrative angle.
+Why I do this work. Make it feel human.
+
+Variation B: Lead with the outcome — ROI-driven, results-focused.
+What the client gets. Make it feel sharp and credible.
+
+Both must be written in MY voice — reference my CLAUDE.md and voice DNA.
+Both should use real details from my &quot;What I Offer&quot; section.
+
+Write both to separate files:
+- copy-variation-a.md
+- copy-variation-b.md</code></pre>
+<p>Read both. You’ll use the stronger one — or cherry-pick the best elements from each.</p>
+<h3 id="c-design-your-site-20-min">1C: Design Your Site (20 min)</h3>
+<p>Now build the actual website. Instead of picking a style yourself, let Claude read your context and propose a design direction that fits <strong>who you are</strong>.</p>
+<pre><code>Read my CLAUDE.md — my identity, industry, voice, the kind of clients I
+work with. Read the copy variations you just wrote. Read research/synthesis.md
+for competitive context.
+
+Based on all of this, propose a design direction that would resonate with
+my target audience and reflect my brand personality. Explain it in 2-3
+sentences — what it looks like, what it feels like, and why it fits me.
+Don&#39;t build yet — just propose.</code></pre>
+<p>Review the direction. Adjust if something feels off. Then:</p>
+<pre><code>Build it. Use [Copy A / Copy B / the best of both].
+
+Apply frontend-design skill standards to all HTML output: strong visual
+hierarchy, professional typography, purposeful whitespace, smooth hover
+states on CTAs, production-grade polish.
+
+The site must be:
+- Single page, responsive, mobile-friendly
+- HTML + CSS + JS, no framework
+- Professional typography and spacing
+- Include: hero, about, services, testimonials, CTA, contact form
+
+Save as my-site/index.html with styles.css in the same directory.</code></pre>
+<p>Open it in your browser: <code>open my-site/index.html</code></p>
+<h3 id="d-review-refine-10-min">1D: Review &amp; Refine (10 min)</h3>
+<p>Look at the site. Be specific about what needs work.</p>
+<pre><code>I&#39;m looking at the site. Here&#39;s what I want to change:
+- [Hero feels too generic — make it more personal]
+- [Services section needs more detail on X]
+- [Colors are too muted — make the CTA stand out more]
+- [Add more whitespace between sections]
+
+Apply these changes to my-site/index.html.</code></pre>
+<p>One round of iteration. Get it to “good enough” — the logo and research polish steps will refine it further.</p>
+<h3 id="e-logo-generation-15-min">1E: Logo Generation (15 min)</h3>
+<pre><code>Generate 2 SVG logo options for my brand:
+- Logo 1: A mark (icon) + wordmark — minimal, modern
+- Logo 2: A typographic logo — distinctive lettering, no icon
+
+Both should work on dark and light backgrounds.
+Use colors that match my final website design.
+
+Save as my-site/logo-v1.svg and my-site/logo-v2.svg.
+
+Also create logos-showcase.html that displays both logos on white and dark
+backgrounds side by side for comparison.</code></pre>
+<p>Pick one and integrate it:</p>
+<pre><code>Use logo [1/2]. Add it to the header of my-site/index.html as an inline SVG.
+Make sure the colors work with the rest of the design.</code></pre>
+<h3 id="f-research-informed-polish-15-min">1F: Research-Informed Polish (15 min)</h3>
+<p>Your Day 1 research feeds back in here. This is the “everything compounds” moment — the research your team ran yesterday now sharpens your site’s positioning.</p>
+<pre><code>Read research/synthesis.md. Based on what my researcher found about
+competitors and market positioning:
+
+1. Is my hero headline differentiated enough from competitors?
+2. Is my services section missing anything the market expects?
+3. Is there a credibility signal I should add (industry stat, framework, methodology)?
+
+Suggest specific copy changes. Reference the research findings.
+Apply the changes to my-site/index.html.</code></pre>
+<h3 id="step-1-checkpoint">Step 1 Checkpoint</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Copy generated in your voice — specific to your services</li>
+<li><input type="checkbox" disabled="" />
+Website built at <code>my-site/index.html</code> — responsive, professional</li>
+<li><input type="checkbox" disabled="" />
+Reviewed and refined — it looks like a real site</li>
+<li><input type="checkbox" disabled="" />
+Logo generated and integrated into the header</li>
+<li><input type="checkbox" disabled="" />
+Research-informed polish applied — positioning sharpened by Day 1 research</li>
+<li><input type="checkbox" disabled="" />
+Open <code>my-site/index.html</code> — you’d show this to a client</li>
+</ul>
+<hr />
+<p><em>Break — 10 min</em></p>
+<hr />
+<h2 id="step-2-the-chatbot-45-min">Step 2: The Chatbot (45 min)</h2>
+<blockquote>
+<p><strong>Before you start:</strong> Your Claude session has been running for 2 hours. Type <code>/compact</code> to summarize and free up context. This keeps Claude fast and accurate for the code-heavy steps ahead.</p>
+</blockquote>
+<p><strong>What you’re building:</strong> An AI chatbot on your website that answers visitors in YOUR voice.</p>
+<p><strong>Day 1 artifacts used:</strong> CLAUDE.md (the system prompt), voice fingerprint (how it talks), “What I Offer” section (what it knows about your services)</p>
+<h3 id="a-set-up-your-api-key-5-min">2A: Set Up Your API Key (5 min)</h3>
+<p>Your chatbot needs an API key to call an LLM. We’ll use <strong>OpenRouter</strong> — it gives you access to Claude, GPT, Gemini, and other models through a single API.</p>
+<p><strong>You’ve been given a pre-loaded OpenRouter API key</strong> — check the chat or the link shared by your instructor. It has credits loaded for the bootcamp.</p>
+<p>Tell Claude:</p>
+<pre><code>Create a .env file in my-site/ directory with this key:
+OPENROUTER_API_KEY=&lt;paste your key here&gt;</code></pre>
+<blockquote>
+<p><strong>Why OpenRouter?</strong> One API key, many models. You can start with Claude and switch to GPT or Gemini later without changing your code.</p>
+</blockquote>
+<h3 id="b-build-the-chat-widget-api-function-25-min">2B: Build the Chat Widget + API Function (25 min)</h3>
+<pre><code>Add an AI chatbot to my website. Here&#39;s exactly what I need:
+
+SETUP:
+- Initialize a Node.js project in my-site/ (npm init -y)
+- Install dependencies: express, dotenv, node-fetch (if needed)
+- Create server.js — a local dev server that serves my website files
+  and routes /api/* requests to the serverless functions in api/
+- It should read .env automatically and start on port 3000
+
+ARCHITECTURE (API key safety):
+- Create api/chat.js — a serverless function (runs server-side)
+- The function calls OpenRouter&#39;s API (https://openrouter.ai/api/v1/chat/completions)
+- It reads OPENROUTER_API_KEY from process.env
+- Use model &quot;anthropic/claude-sonnet-4&quot; (or any model available on OpenRouter)
+- Frontend calls /api/chat — the API key NEVER appears in client-side code
+
+SYSTEM PROMPT:
+Read my CLAUDE.md and use the full content as the system prompt, with these
+additions:
+- &quot;You are [my name]&#39;s AI assistant on their website. Answer questions about
+  their services, experience, and approach.&quot;
+- &quot;Speak in [my name]&#39;s voice — use their tone, vocabulary, and style as
+  described in the &#39;My Writing Voice&#39; section.&quot;
+- &quot;Keep responses concise — 2-3 sentences max. Be helpful and warm.&quot;
+- &quot;If asked about pricing, reference the ranges in &#39;What I Offer&#39; but
+  suggest a conversation for specifics.&quot;
+- &quot;If you don&#39;t know something, say &#39;I&#39;d suggest reaching out directly —
+  [contact method from CLAUDE.md].&#39;&quot;
+- &quot;IMPORTANT: You are responding in a chat widget, not a document. Write
+  in plain conversational text. No markdown — no headers, no bold, no
+  bullet lists. Just talk naturally like a human in a chat.&quot;
+
+FRONTEND:
+- Clean chat widget in the bottom-right corner
+- Matches my site&#39;s design (colors, fonts)
+- Mobile-friendly
+- Shows typing indicator while waiting
+- Collapsed by default, opens on click
+- Chat bubble says &quot;Ask me anything&quot;
+- The full interaction cycle must work: open the widget → type and send
+  a message → see the typing indicator while waiting → receive the
+  response with the input ready for the next message → close the widget
+  → reopen it and send another message. Every step must work every time.
+
+Save the updated files. Keep the same my-site/ directory structure.
+
+After creating all files, install dependencies and start the server.</code></pre>
+<p>Claude will run <code>npm install</code> and <code>node server.js</code> for you. Once you see “Server running on http://localhost:3000” in the terminal, move on.</p>
+<blockquote>
+<p><strong>What’s server.js?</strong> A tiny local server that serves your website and routes <code>/api/*</code> requests to your serverless functions. It reads your <code>.env</code> file automatically. When you deploy to Vercel later, Vercel does the same thing — but for now, your laptop is the server.</p>
+</blockquote>
+<h3 id="c-test-the-chatbot-locally-10-min">2C: Test the Chatbot Locally (10 min)</h3>
+<p>Open <strong>http://localhost:3000</strong>. Click the chat bubble. Test these:</p>
+<ol type="1">
+<li>“What do you do?” — should describe your services from CLAUDE.md</li>
+<li>“How can you help someone like me?” — should be specific, not generic</li>
+<li>“What’s your approach?” — should reflect your style</li>
+<li>“How much do you charge?” — should reference your pricing range</li>
+</ol>
+<p><strong>Does the widget work?</strong> Test the basics: click the bubble to open, send a message, verify the input re-enables after the response, click X to close, click the bubble again to reopen. If the panel won’t close, the input stays frozen, or the typing dots won’t stop — tell Claude what you see and ask it to fix the chat widget.</p>
+<p><strong>Does it sound like you?</strong> If it’s too formal, too vague, or missing context:</p>
+<pre><code>The chatbot response was [too formal / too generic / missing info about X].
+Update the system prompt in api/chat.js to fix this.</code></pre>
+<h3 id="d-voice-check-5-min">2D: Voice Check (5 min)</h3>
+<p>The real test — does it pass the “would I actually say this?” check?</p>
+<pre><code>Read the system prompt in api/chat.js. Compare it against my CLAUDE.md
+voice section. Is anything missing that would make the chatbot sound more
+like me? Suggest specific additions to the system prompt.</code></pre>
+<p>Ask a friend or neighbor to chat with your bot at <code>http://localhost:3000</code>. Do they think it sounds like a real person?</p>
+<h3 id="step-2-checkpoint">Step 2 Checkpoint</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Chat widget visible at http://localhost:3000</li>
+<li><input type="checkbox" disabled="" />
+API function handles calls (key is safe — server-side only)</li>
+<li><input type="checkbox" disabled="" />
+Chatbot answers questions about your services using CLAUDE.md</li>
+<li><input type="checkbox" disabled="" />
+Chatbot speaks in your voice — not generic AI</li>
+<li><input type="checkbox" disabled="" />
+Tested on mobile (use your local IP, e.g. <code>http://192.168.x.x:3000</code>)</li>
+</ul>
+<hr />
+<p><em>Lunch — 40 min</em></p>
+<hr />
+<h2 id="step-3-the-proposal-engine-55-min">Step 3: The Proposal Engine (55 min)</h2>
+<blockquote>
+<p><strong>Back from lunch?</strong> Run <code>/compact</code> again. The proposal engine is the most complex step — Claude needs a clean context window to generate and customize the code correctly.</p>
+</blockquote>
+<p><strong>What you’re building:</strong> The chatbot gains a second mode — it gathers requirements, generates a personalized proposal PDF, emails it to the visitor, and alerts you on Telegram.</p>
+<p><strong>Day 1 artifacts used:</strong> Voice fingerprint (proposal voice), “What I Offer” (proposal scoping), Chief of Staff triage rules (lead scoring), Telegram bot (owner alerts)</p>
+<h3 id="a-add-intake-mode-to-the-chatbot-20-min">3A: Add Intake Mode to the Chatbot (20 min)</h3>
+<pre><code>Upgrade the chatbot in api/chat.js to support two modes:
+
+MODE 1 — Q&amp;A (existing):
+Same as before. Answers questions about my services in my voice.
+
+MODE 2 — INTAKE (new):
+When a visitor expresses interest or need (&quot;I need help with...&quot;,
+&quot;Can you help me...&quot;, &quot;I&#39;m looking for...&quot;), the chatbot transitions
+to intake mode and gathers requirements conversationally:
+
+1. What does your company do? (industry, size, stage)
+2. What&#39;s the challenge you&#39;re facing?
+3. What have you tried so far?
+4. What would success look like?
+5. What&#39;s your budget range?
+6. What&#39;s your email? (asked last)
+
+The chatbot should:
+- Ask ONE question at a time, conversationally (not a form)
+- Acknowledge each answer naturally before asking the next
+- Use my voice throughout
+- After getting the email, say: &quot;Perfect — I&#39;ll put together a proposal
+  tailored to your situation. You&#39;ll have it in your inbox shortly.&quot;
+
+The conversation history must be maintained across messages (pass full
+history on each API call). When intake completes, the frontend should
+POST the full conversation + structured data to /api/generate-proposal.
+
+Update both api/chat.js and the frontend chat widget.</code></pre>
+<p>Test the intake flow: open the chat, say “I need help with my marketing strategy” and walk through the questions.</p>
+<h3 id="b-build-the-agentic-proposal-engine-20-min">3B: Build the Agentic Proposal Engine (20 min)</h3>
+<p>This is where your chatbot becomes an <strong>agent</strong>. Instead of hardcoding every step (“first do this, then do that”), you give Claude a set of <strong>tools</strong> and let it decide the flow.</p>
+<p>Think about it: in Steps 1-2, you told Claude what to write. Now you’re telling Claude what it can <strong>do</strong> — and letting it figure out the rest.</p>
+<p><strong>The pattern:</strong></p>
+<ul>
+<li>You define tools (render PDF, send email, alert owner)</li>
+<li>Claude receives the visitor’s intake data + the tools</li>
+<li>Claude decides: “I’ll write the proposal, render a PDF, score this lead, email it, and alert you”</li>
+<li>Your code just executes whatever Claude asks for</li>
+<li>This is the same pattern behind Claude Code itself — Claude gets tools, decides what to do, and acts</li>
+</ul>
+<p><strong>We’ve pre-built the engine for you.</strong> The agentic proposal engine has a lot of moving parts — PDF rendering, email APIs, Telegram alerts, an agent loop. Rather than risk a broken build, we’re giving you a tested reference implementation. Your job is to make it yours.</p>
+<p><strong>Step 1: Copy the reference files</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the PDF library</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site <span class="kw">&amp;&amp;</span> <span class="ex">npm</span> install pdf-lib</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the pre-built proposal engine and Vercel config</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ../reference/api/generate-proposal.js api/generate-proposal.js</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ../reference/vercel.json vercel.json</span></code></pre></div>
+<p><strong>Step 2: Read and understand what it does</strong></p>
+<pre><code>Read api/generate-proposal.js. Explain to me in plain language:
+1. What are the 3 tools Claude can use?
+2. How does the agent loop work?
+3. Where does the system prompt come from?
+4. What does sanitizeForPdf do and why is it needed?</code></pre>
+<p>Take a minute to understand the architecture. This is the same pattern behind Claude Code itself — an LLM with tools, running in a loop until the job is done.</p>
+<p><strong>Step 3: Customize it with YOUR identity</strong></p>
+<p>The file has <code>[CUSTOMIZE]</code> markers where your data needs to go. Tell Claude:</p>
+<pre><code>Read api/generate-proposal.js and my CLAUDE.md. The file has [CUSTOMIZE]
+markers. Replace them:
+
+1. The AGENT_SYSTEM_PROMPT — replace the placeholder with my real identity,
+   voice, services, pricing, and lead triage rules from my CLAUDE.md
+2. The PDF cover page — my real name and tagline
+3. The PDF footer — my real contact info
+4. The PDF brand colors — match my website&#39;s color scheme
+5. The email sender name — use my name (keep onboarding@resend.dev as the
+   email address — that&#39;s a Resend free tier requirement)
+
+Keep everything else exactly as it is — the tools, the agent loop, the
+sanitizeForPdf function. Only change the [CUSTOMIZE] parts.</code></pre>
+<blockquote>
+<p><strong>What is this file?</strong> It’s an AI agent. The chatbot (Step 2) gathers information. This agent takes action: it writes a proposal in your voice, renders a branded PDF, emails it to the visitor, scores the lead, and alerts you on Telegram. Claude decides the order. Claude writes the content. Your code just gives it tools and gets out of the way. That’s the difference between a script and an agent.</p>
+</blockquote>
+<h3 id="c-set-up-external-services-5-min">3C: Set Up External Services (5 min)</h3>
+<p>Two services need API keys. Add them to your <code>.env</code> file in <code>my-site/</code>.</p>
+<p><strong>Resend (email sending):</strong></p>
+<ol type="1">
+<li>Go to <a href="https://resend.com">resend.com</a> → sign up → create API key</li>
+<li>On the free tier, use the default <code>onboarding@resend.dev</code> sender (can send to your own email)</li>
+<li>Add to your <code>.env</code> file: <code>RESEND_API_KEY=re_your_key_here</code></li>
+</ol>
+<p><strong>Telegram alerts (reuse Day 1 bot):</strong></p>
+<ul>
+<li>You already have <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code> from yesterday</li>
+<li>Add both to your <code>.env</code> file</li>
+</ul>
+<p>Your <code>.env</code> file should now have all 4 keys:</p>
+<pre><code>OPENROUTER_API_KEY=...
+RESEND_API_KEY=...
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHAT_ID=...</code></pre>
+<blockquote>
+<p><strong>All services are free tier.</strong> Resend free tier handles 100 emails/day. More than enough for your AI sales agent.</p>
+</blockquote>
+<h3 id="d-test-everything-locally-10-min">3D: Test Everything Locally (10 min)</h3>
+<p>First, verify all services are connected before testing end-to-end:</p>
+<pre><code>Run a quick health check on all external services:
+1. Test that OPENROUTER_API_KEY works (make a simple API call)
+2. Test that RESEND_API_KEY is valid (check the API responds)
+3. Test that TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID can send a message
+
+Report which services are working and which need fixing.</code></pre>
+<p>Fix anything that’s broken before proceeding. Common issues: - Resend: works but can only send to your own email on the free tier - Telegram: “chat not found” → make sure you messaged your bot first (from Day 1)</p>
+<p>Now restart the server so it picks up the new API keys:</p>
+<pre><code>Restart the server (stop the old one and run node server.js again)</code></pre>
+<p>Now test the full agent loop at <strong>http://localhost:3000</strong>:</p>
+<ol type="1">
+<li>Click the chat bubble</li>
+<li>Say: “I need help with my GTM strategy”</li>
+<li>Answer the intake questions naturally</li>
+<li>Provide your email address (use the email you signed up with on Resend — free tier only sends to your own email)</li>
+<li>Wait 30 seconds</li>
+</ol>
+<p><strong>Three things should happen:</strong></p>
+<ul>
+<li>The chatbot says “You’ll have it in your inbox shortly”</li>
+<li>An email arrives with a <strong>personalized proposal PDF</strong> attached</li>
+<li>Your phone buzzes with a Telegram alert — lead summary with score + the proposal PDF</li>
+</ul>
+<p>Check the terminal running <code>node server.js</code> — you’ll see the agent working:</p>
+<pre><code>Agent turn 1... Claude called 1 tool: render_proposal_pdf
+Agent turn 2... Claude called 2 tools: send_email, alert_owner
+Agent turn 3... Agent completed.
+Agent pipeline complete: { proposal: true, email: true, alerted: true }</code></pre>
+<p><strong>If something breaks:</strong></p>
+<ul>
+<li>Check the terminal for error messages — they’ll tell you exactly which step failed</li>
+<li>Missing env var → check your <code>.env</code> file</li>
+<li>Email not arriving → check Resend dashboard; free tier only sends to your own email</li>
+<li>Telegram not working → verify your bot token and chat ID from Day 1</li>
+<li>PDF generation error mentioning “cannot encode” → the AI-generated proposal has special characters (like ₹) that pdf-lib’s standard fonts can’t render. Tell Claude: “The PDF crashed on a special character. Add text sanitization to handle non-ASCII characters before rendering.”</li>
+</ul>
+<h3 id="step-3-checkpoint">Step 3 Checkpoint</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Chatbot transitions to intake mode when visitor expresses need</li>
+<li><input type="checkbox" disabled="" />
+Intake gathers requirements conversationally (not a form)</li>
+<li><input type="checkbox" disabled="" />
+<strong>Agent loop works</strong> — Claude decides the flow, calls tools autonomously</li>
+<li><input type="checkbox" disabled="" />
+Proposal PDF generated — branded, personalized, in your voice</li>
+<li><input type="checkbox" disabled="" />
+Email sent to visitor with PDF attachment</li>
+<li><input type="checkbox" disabled="" />
+Lead scored and Telegram alert sent — with the proposal PDF attached</li>
+<li><input type="checkbox" disabled="" />
+<strong>End-to-end test works</strong> — chat → intake → agent → PDF → email → alert</li>
+</ul>
+<hr />
+<p><em>Break — 10 min</em></p>
+<hr />
+<h2 id="step-4-deploy-demo-70-min">Step 4: Deploy &amp; Demo (70 min)</h2>
+<p><strong>What you’re doing:</strong> Everything works locally. Now put it on the internet — live URL, real visitors, real agent running 24/7.</p>
+<h3 id="a-push-to-github-5-min">4A: Push to GitHub (5 min)</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div>
+<p>Create a <code>.gitignore</code> that excludes sensitive and generated files:</p>
+<pre><code>Tell Claude: Create a .gitignore that excludes node_modules, .env, and .vercel</code></pre>
+<p>Then push to GitHub:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo create my-site <span class="at">--public</span> <span class="at">--source</span><span class="op">=</span>. <span class="at">--push</span></span></code></pre></div>
+<blockquote>
+<p><strong>IMPORTANT:</strong> The <code>.gitignore</code> must exclude <code>.env</code> — your API keys should never be in GitHub. Vercel gets them separately.</p>
+</blockquote>
+<h3 id="b-deploy-to-vercel-10-min">4B: Deploy to Vercel (10 min)</h3>
+<ol type="1">
+<li>Go to <a href="https://vercel.com">vercel.com</a> and sign in (use “Continue with GitHub”)</li>
+<li>Click <strong>“Add New Project”</strong></li>
+<li>Find your <code>my-site</code> repo in the list and click <strong>Import</strong></li>
+<li>Framework Preset: select <strong>“Other”</strong></li>
+<li>Click <strong>Deploy</strong></li>
+</ol>
+<p>You’ll get a URL like <code>https://my-site.vercel.app</code>.</p>
+<p>Now add your environment variables. Go to your project → <strong>Settings</strong> → <strong>Environment Variables</strong> and add all 4:</p>
+<ul>
+<li><code>OPENROUTER_API_KEY</code></li>
+<li><code>RESEND_API_KEY</code></li>
+<li><code>TELEGRAM_BOT_TOKEN</code></li>
+<li><code>TELEGRAM_CHAT_ID</code></li>
+</ul>
+<p>After adding the env vars, <strong>redeploy</strong>: go to <strong>Deployments</strong> → click the three dots on the latest deploy → <strong>Redeploy</strong>.</p>
+<blockquote>
+<p><strong>Not working?</strong> Make sure <code>index.html</code> is in the root of the repo (not in a subfolder). If the page is blank, check the Vercel build logs for errors.</p>
+</blockquote>
+<blockquote>
+<p><strong>Did the Lead Storage Power Up?</strong> Also add <code>SUPABASE_URL</code> and <code>SUPABASE_KEY</code> to your Vercel env vars.</p>
+</blockquote>
+<h3 id="c-the-live-demo-15-min">4C: The Live Demo (15 min)</h3>
+<p><strong>Open your live URL on your phone.</strong> That’s your site. Real URL. Real internet. The agent is running.</p>
+<p>Now the moment. Ask a neighbor (or use a second device) to be your “visitor.”</p>
+<ol type="1">
+<li><strong>Visitor</strong> lands on your live site, browses</li>
+<li><strong>Visitor</strong> opens chat: “I’m looking for help with [something relevant to your services]”</li>
+<li><strong>Chatbot</strong> (in your voice) gathers requirements over 3-5 messages</li>
+<li><strong>Visitor</strong> provides their email</li>
+<li><strong>Behind the scenes</strong> — the agent loop kicks in: Claude writes the proposal, renders a PDF, scores the lead, sends the email, and alerts you</li>
+<li><strong>Visitor’s inbox</strong> — personalized proposal PDF arrives</li>
+<li><strong>Your phone buzzes</strong> — Telegram shows the lead summary + the proposal PDF</li>
+</ol>
+<p><strong>That’s an agent.</strong> It perceived a visitor, decided they were qualified, generated a personalized proposal, rendered a branded PDF, emailed it, scored the lead, and alerted you — all in about 25 seconds, without you opening a laptop.</p>
+<h3 id="d-understand-what-you-built-5-min">4D: Understand What You Built (5 min)</h3>
+<p><strong>The chatbot</strong> (Step 2) is a conversation tool. It answers questions. It gathers information. But it doesn’t <em>do</em> anything.</p>
+<p><strong>The agent</strong> (Step 3) is different. It receives the conversation, then <em>acts autonomously</em>:</p>
+<ul>
+<li>It decides the lead is worth a proposal</li>
+<li>It writes a personalized proposal in your voice</li>
+<li>It renders a branded PDF</li>
+<li>It writes a personalized email and sends it</li>
+<li>It scores the lead using your triage rules</li>
+<li>It alerts you on Telegram — with the proposal attached</li>
+</ul>
+<p>You didn’t write “step 1, step 2, step 3.” You gave Claude tools and a goal. Claude figured out the steps. That’s the difference between a script and an agent.</p>
+<blockquote>
+<p><strong>The teaching moment:</strong> “You don’t give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately. Next week, you add approval mode — the agent generates the proposal, sends it to your phone for review, and waits for your ‘approve’ before sending. Start autonomous, build trust, then add guardrails where you need them.”</p>
+</blockquote>
+<p>Now every <code>git push</code> automatically updates your live site. The agent runs 24/7 without you touching anything.</p>
+<h3 id="step-4-checkpoint">Step 4 Checkpoint</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Code pushed to GitHub</li>
+<li><input type="checkbox" disabled="" />
+Site live on Vercel — visit it on your phone</li>
+<li><input type="checkbox" disabled="" />
+Chat widget works on the live URL</li>
+<li><input type="checkbox" disabled="" />
+<strong>Full agent loop works on production</strong> — proposal PDF arrives in email + Telegram buzzes</li>
+<li><input type="checkbox" disabled="" />
+You understand the difference between a chatbot and an agent</li>
+</ul>
+<hr />
+<h2 id="power-ups-400-430">Power Ups (4:00 – 4:30)</h2>
+<p>Your site is live. Your agent is running. Everything below is optional — pick whatever interests you, in any order.</p>
+<hr />
+<h3 id="power-up-roast-fix-40-min">Power Up: Roast &amp; Fix (40 min)</h3>
+<p><strong>What this adds:</strong> Your Day 1 advisory board pattern, applied as a critique panel to improve your live site.</p>
+<p>Yesterday you built an advisory board to evaluate a decision. Same pattern, different job — your advisors are now critics reviewing your deployed website.</p>
+<pre><code>I need you to review the website at my-site/index.html by assembling a
+5-person expert panel. Each expert reviews independently, then they
+discuss and produce a prioritized fix list.
+
+THE PANEL:
+1. **Shreya Iyer, Brand Strategist** — Is the copy distinctive? Does it
+   sound like a real person or like AI? Would she remember this site?
+2. **Marcus Tan, Product Designer** — Visual hierarchy, CTAs, whitespace,
+   mobile responsiveness, load time. What&#39;s broken?
+3. **Ankit Verma, Growth Marketer** — 5-second test: do I understand the
+   value prop? Would I convert? Where do visitors drop off?
+4. **Meera Nambiar, Target Customer** — She&#39;s the exact person this site
+   is for. Is she convinced? What questions does she still have?
+5. **Rohit Kapoor, Angel Investor** — Positioning credibility. Does this
+   look like someone worth betting on? Or is it generic?
+
+INSTRUCTIONS:
+1. Each expert writes their review independently to roast/[name]-review.md
+2. After all 5, they discuss — create roast/panel-discussion.md
+3. Produce roast/fix-list.md with issues ranked:
+   - P0: Launch blockers (fix before deploying)
+   - P1: Important (fix soon)
+   - P2: Nice to have
+
+Go. Be harsh. I&#39;d rather fix real problems now.</code></pre>
+<p>Apply the fixes:</p>
+<pre><code>Read roast/fix-list.md. Apply all P0 fixes to my-site/index.html.
+Then apply the top 3 P1 fixes. Stop there — we&#39;re shipping.</code></pre>
+<p>Push and redeploy:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Apply roast fixes&quot;</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code></pre></div>
+<p>Vercel will auto-redeploy. Check your live URL — the fixes should be live in under a minute.</p>
+<p><strong>Checkpoint:</strong> - [ ] Expert roast completed — 5 reviewers, prioritized fix list - [ ] P0 and top P1 fixes applied - [ ] Changes pushed and live on Vercel</p>
+<hr />
+<h3 id="power-up-lead-storage-with-supabase-20-min">Power Up: Lead Storage with Supabase (20 min)</h3>
+<p><strong>What this adds:</strong> Every lead stored in a database with scores — your own CRM. Enables dashboards and follow-up automations later.</p>
+<p><strong>Set up Supabase (free tier):</strong></p>
+<ol type="1">
+<li>Go to <a href="https://supabase.com">supabase.com</a> → sign up → <strong>New Project</strong>
+<ul>
+<li>Organization: create one (or use existing)</li>
+<li>Project name: <code>my-site-leads</code> (or whatever you like)</li>
+<li>Database password: set one (you won’t need it directly — save it anyway)</li>
+<li>Region: pick the closest to you</li>
+<li>Plan: <strong>Free</strong> (plenty for this)</li>
+</ul></li>
+<li>Get your <strong>API URL</strong>:
+<ul>
+<li>Go to <strong>Project Settings</strong> (gear icon, left sidebar) → <strong>Data API</strong></li>
+<li>Copy the <strong>API URL</strong> at the top (under “RESTful endpoint for querying and managing your database”) — it looks like <code>https://abcdefg.supabase.co</code></li>
+</ul></li>
+<li>Get your <strong>API key</strong>:
+<ul>
+<li>Go to <strong>Project Settings</strong> → <strong>API Keys</strong></li>
+<li>Copy the <strong>Publishable key</strong> — it starts with <code>sb_publishable_...</code></li>
+<li>(Ignore the Secret key — you don’t need it for this)</li>
+</ul></li>
+<li>Create the leads table:
+<ul>
+<li>Go to <strong>SQL Editor</strong> (left sidebar, looks like a terminal icon)</li>
+<li>Click <strong>New Query</strong> and paste this:</li>
+</ul></li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> leads (</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">id</span> BIGINT <span class="kw">GENERATED</span> ALWAYS <span class="kw">AS</span> IDENTITY <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  name TEXT,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  company TEXT,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  email TEXT,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  industry TEXT,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  challenge TEXT,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  budget TEXT,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  score TEXT,</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  conversation_transcript TEXT,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  status TEXT <span class="kw">DEFAULT</span> <span class="st">&#39;proposal_sent&#39;</span>,</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  created_at TIMESTAMPTZ <span class="kw">DEFAULT</span> now()</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- Enable Row Level Security</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> leads <span class="kw">ENABLE</span> <span class="kw">ROW</span> <span class="kw">LEVEL</span> SECURITY;</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">-- Allow inserts from the publishable key (your serverless function)</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> POLICY <span class="ot">&quot;Allow anonymous inserts&quot;</span> <span class="kw">ON</span> leads</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">FOR</span> <span class="kw">INSERT</span> <span class="kw">WITH</span> <span class="kw">CHECK</span> (<span class="kw">true</span>);</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co">-- Allow reads from the publishable key (for your dashboard later)</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> POLICY <span class="ot">&quot;Allow anonymous reads&quot;</span> <span class="kw">ON</span> leads</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">FOR</span> <span class="kw">SELECT</span> <span class="kw">USING</span> (<span class="kw">true</span>);</span></code></pre></div>
+<ul>
+<li>Click <strong>Run</strong> (or Cmd+Enter). You should see “Success. No rows returned” — that means it worked.</li>
+</ul>
+<ol start="5" type="1">
+<li>Add to your <code>.env</code> file:
+<ul>
+<li><code>SUPABASE_URL=https://your-project.supabase.co</code></li>
+<li><code>SUPABASE_KEY=sb_publishable_your-key-here</code></li>
+</ul></li>
+<li><strong>Verify:</strong> Go to <strong>Table Editor</strong> (left sidebar) → you should see a <strong>leads</strong> table. It’ll be empty — that’s correct.</li>
+</ol>
+<p><strong>Add the <code>store_lead</code> tool to your agent:</strong></p>
+<pre><code>Add a 4th tool to the agent in api/generate-proposal.js:
+
+store_lead:
+- Claude passes: name, company, email, industry, challenge, budget,
+  score (HIGH/MEDIUM/LOW), status
+- Your code stores in Supabase leads table via REST API
+- Claude scores the lead itself using the triage rules in the
+  system prompt — no regex needed
+
+Use the Supabase REST API:
+POST to ${SUPABASE_URL}/rest/v1/leads
+Header: apikey set to SUPABASE_KEY
+Content-Type: application/json</code></pre>
+<p>Add <code>SUPABASE_URL</code> and <code>SUPABASE_KEY</code> to your Vercel env vars too, then redeploy.</p>
+<p>Test it: trigger the full agent loop again. Check Supabase → <strong>Table Editor</strong> → <strong>leads</strong> — you should see the lead with its score.</p>
+<blockquote>
+<p><strong>Supabase free tier</strong> gives 500 MB database + 1 GB file storage. More than enough for your AI sales agent.</p>
+</blockquote>
+<p><strong>Checkpoint:</strong> - [ ] Supabase project created with leads table - [ ] <code>store_lead</code> tool added to agent - [ ] Leads appear in Supabase Table Editor with scores</p>
+<hr />
+<h3 id="power-up-second-design-compare-20-min">Power Up: Second Design + Compare (20 min)</h3>
+<p><strong>What this adds:</strong> A second design direction and a side-by-side comparison tool — pick the best elements from each.</p>
+<pre><code>Create a second HTML website using a different design direction from
+the one we built:
+
+[If you built warm/personal, try bold/professional — or vice versa]
+
+Apply frontend-design skill standards. Use the same copy but with a
+different visual approach:
+- Different color palette
+- Different layout structure
+- Different typographic feel
+
+Save as design-v2/index.html (+ styles.css)</code></pre>
+<p>Open both: <code>open my-site/index.html</code> and <code>open design-v2/index.html</code></p>
+<pre><code>Create a comparison.html file that shows both designs side by side
+in an iframe layout. I want to compare specific sections:
+- Hero sections
+- Services sections
+- CTA sections
+
+Add radio buttons so I can pick my favorite version of each section.</code></pre>
+<p>If you want to combine elements:</p>
+<pre><code>I want to combine the best of both:
+- Hero: from Design [1/2]
+- About section: from Design [1/2]
+- Services: from Design [1/2]
+- Testimonials: from Design [1/2]
+- CTA: from Design [1/2]
+- Color scheme: from Design [1/2]
+
+Update my-site/index.html with the combined version.</code></pre>
+<p>Push and redeploy if you make changes to <code>my-site/</code>.</p>
+<hr />
+<h2 id="show-tell-430-455">Show &amp; Tell (4:30 – 4:55)</h2>
+<p><strong>3 minutes per person.</strong> Share your screen. Show the live URL. This is a demo, not a lecture.</p>
+<h3 id="the-format">The Format</h3>
+<p><strong>1. Who I am (15 sec)</strong> — Name, role, one line.</p>
+<p><strong>2. What I built — show the live URL (1 min)</strong> — Pull up your Vercel URL. Walk through the site. Click the chat widget. If the agent pipeline works, trigger it — show the proposal PDF arriving, your phone buzzing.</p>
+<p><strong>3. The compound — how Day 1 fed Day 2 (45 sec)</strong> — Pick ONE example: voice fingerprint → chatbot voice, research → site positioning, triage rules → lead scoring, advisory board → roast panel.</p>
+<p><strong>4. Where I got stuck (30 sec)</strong> — What broke? What fixed it?</p>
+<p><strong>5. What I’m doing Monday (15 sec)</strong> — One specific thing. “I’m sending this URL to 3 prospects” or “I’m running /brief every morning.”</p>
+<blockquote>
+<p><strong>For Zoom:</strong> Instructor will call on people. Have your live URL ready in a browser tab. If you’re not called, drop your URL in the chat — everyone should see what you shipped.</p>
+</blockquote>
+<hr />
+<h2 id="what-you-built-this-weekend">What You Built This Weekend</h2>
+<h3 id="day-1-day-2-the-compound">Day 1 → Day 2: The Compound</h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 3%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Day 1</th>
+<th>→</th>
+<th>Day 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CLAUDE.md</td>
+<td>→</td>
+<td>Chatbot system prompt — answers like you</td>
+</tr>
+<tr class="even">
+<td>Voice fingerprint</td>
+<td>→</td>
+<td>Proposals and emails written in your voice</td>
+</tr>
+<tr class="odd">
+<td>Researcher team</td>
+<td>→</td>
+<td>Competitive positioning on your site</td>
+</tr>
+<tr class="even">
+<td>Advisory board</td>
+<td>→</td>
+<td>Expert roast panel that refined your site (Power Up)</td>
+</tr>
+<tr class="odd">
+<td>Chief of Staff triage rules</td>
+<td>→</td>
+<td>Claude scores leads using YOUR rules (no regex — real reasoning)</td>
+</tr>
+<tr class="even">
+<td>Telegram bot</td>
+<td>→</td>
+<td>Owner alerts — phone buzzes with lead summary + proposal PDF</td>
+</tr>
+<tr class="odd">
+<td>Comms Lead skill</td>
+<td>→</td>
+<td>Website copy written in your voice</td>
+</tr>
+</tbody>
+</table>
+<p>Without Day 1, today would have produced a generic website with a chatbox.</p>
+<p>With Day 1, today produced a <strong>personal sales agent that speaks in your voice, qualifies leads, writes proposals, renders branded PDFs, emails them, and alerts you on your phone — running 24/7 on the internet.</strong></p>
+<h3 id="your-deliverables">Your Deliverables</h3>
+<p><strong>Core (everyone):</strong> - [ ] <strong>Published website</strong> — live URL on Vercel - [ ] <strong>AI chatbot</strong> — answers in your voice, knows your services - [ ] <strong>AI agent</strong> — Claude with tools, orchestrating autonomously - [ ] <strong>Branded proposal PDFs</strong> — generated per visitor using pdf-lib - [ ] <strong>Email automation</strong> — proposals emailed with PDF attachments - [ ] <strong>Lead scoring</strong> — Claude applies your triage rules (in Telegram alerts) - [ ] <strong>Owner alerts</strong> — Telegram notifications with proposal PDF attached - [ ] <strong>Logo</strong> — SVG logo integrated into site header - [ ] <strong>Research polish</strong> — competitive differentiation sharpened by Day 1 research</p>
+<p><strong>Power Ups (if completed):</strong> - [ ] <strong>Expert roast</strong> — advisory board critique + fixes applied - [ ] <strong>CRM storage</strong> — leads stored in Supabase with scores - [ ] <strong>Second design</strong> — compared and combined best elements</p>
+<h3 id="key-deliverables-achieved">Key Deliverables Achieved</h3>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 37%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Deliverable</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Competitive research &amp; analysis</td>
+<td>Day 1 Step 3 + website positioning</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Data analysis &amp; Report generation</td>
+<td>Day 1 Step 5 + lead scoring</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>RFP / Contracts / Artifacts</td>
+<td>Proposal PDFs — personalized per client</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Email Triage</td>
+<td>Day 1 Chief of Staff + Day 2 lead alerts</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Published agent</td>
+<td>Chatbot + proposal engine + alerts</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Content creation</td>
+<td>Website copy + proposals + emails — all in your voice</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Published website</td>
+<td>Live URL on Vercel</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Creating Amazing decks</td>
+<td>Branded proposal PDFs — different for every client</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-monday-morning-habit">The Monday Morning Habit</h2>
+<p>You now have two systems that work every day:</p>
+<p><strong>Morning (Day 1 system):</strong></p>
+<pre><code>/brief</code></pre>
+<p>Your Chief of Staff reads your email, applies your triage rules, and delivers a morning briefing to your phone.</p>
+<p><strong>All day (Day 2 system):</strong> Your website is live. Visitors arrive. The chatbot engages them. When someone’s serious, it gathers their requirements and generates a personalized proposal. Your phone buzzes. You review. You approve. The proposal lands in their inbox. You didn’t open a laptop.</p>
+<p><strong>The loop:</strong></p>
+<pre><code>Day 1 system: Email comes IN → Claude triages it for you
+Day 2 system: Email goes OUT → Claude sells for you</code></pre>
+<hr />
+<h2 id="take-home-stretch-goals">Take-Home Stretch Goals</h2>
+<p>Things you can add after the bootcamp:</p>
+<ul>
+<li><strong>Automated follow-ups:</strong> Vercel Cron Job (free: 2/day) checks Supabase for leads &gt;48hrs with no response, auto-sends personalized follow-up</li>
+<li><strong>Calendar booking:</strong> Add a Cal.com link in proposals for high-value leads</li>
+<li><strong>Lead dashboard:</strong> Build a /admin page reading from Supabase</li>
+<li><strong>Full autonomy:</strong> Set <code>APPROVAL_MODE=false</code> once you trust the proposals</li>
+<li><strong>Custom domain:</strong> Point your own domain to the Vercel deployment</li>
+<li><strong>Multiple proposal templates:</strong> Different formats for different service lines</li>
+</ul>
+<hr />
+<h2 id="key-takeaway">Key Takeaway</h2>
+<blockquote>
+<p>Yesterday, Claude learned who you are, how you write, what your world looks like. Today, Claude used all of that to build your public face and sell for you while you sleep. One weekend. Two deployed products. An AI team that works when you don’t. The question isn’t whether this works — you just proved it does. The question is: what do you build next?</p>
+</blockquote>
+<hr />
+<h2 id="annexure">Annexure</h2>
+<h3 id="deploying-via-vercel-cli">Deploying via Vercel CLI</h3>
+<p>During the bootcamp we deployed via the Vercel dashboard (GitHub import). For quick iterations after the bootcamp, you can deploy directly from your terminal:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Vercel CLI (one time)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> vercel</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy from your project directory</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy to production (after testing)</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> <span class="at">--prod</span></span></code></pre></div>
+<p>The CLI is useful when you want to preview a change before pushing to GitHub, or when you want to set environment variables:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add environment variables (used in Steps 2-3)</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add OPENROUTER_API_KEY</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add RESEND_API_KEY</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_BOT_TOKEN</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_CHAT_ID</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If you completed the Lead Storage Power Up:</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_URL</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_KEY</span></code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> Dashboard deploys (via GitHub push) and CLI deploys both work. Use GitHub push for production changes, CLI for quick previews.</p>
+</blockquote>
+</body>
+</html>
