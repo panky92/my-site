@@ -107,19 +107,21 @@ If Claude confirms the skill is active, you're set. Move on to Getting Started.
 
 ## Getting Started
 
-Open your terminal and navigate to today's build folder:
+Open your terminal, clone the Day 2 repo, and go inside it:
 
 ```bash
-cd ~/thecrux-bootcamp/day2-guided-build
+cd ~/thecrux-bootcamp
+git clone https://github.com/thecrux-ai/cohort-2-day-2
+cd cohort-2-day-2
 ```
 
 Copy your Day 1 artifacts into this folder — everything your team built yesterday:
 
 ```bash
-cp -r ~/thecrux-bootcamp/day1-guided-build/CLAUDE.md .
-cp -r ~/thecrux-bootcamp/day1-guided-build/.claude .
-cp -r ~/thecrux-bootcamp/day1-guided-build/research .
-cp -r ~/thecrux-bootcamp/day1-guided-build/evaluation .
+cp -r ~/thecrux-bootcamp/cohort-2-day-1/CLAUDE.md .
+cp -r ~/thecrux-bootcamp/cohort-2-day-1/.claude .
+cp -r ~/thecrux-bootcamp/cohort-2-day-1/research .
+cp -r ~/thecrux-bootcamp/cohort-2-day-1/evaluation .
 ```
 
 Start Claude:
