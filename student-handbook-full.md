@@ -32,12 +32,8 @@ Today's build runs on everything you built yesterday. Here's a quick check:
 | **CLAUDE.md**                   | Root of your project                        | Chatbot system prompt — answers visitors using your context                                |
 | **"What I Offer" section**      | Inside CLAUDE.md                            | Chatbot explains your services. Proposals scope recommendations.                           |
 | **Voice fingerprint**           | CLAUDE.md "My Writing Voice" section        | Chatbot speaks like you. Proposals written like you. Emails sound like you.                |
-| **Comms Lead skill**            | `.claude/skills/write-in-my-voice/`         | Generates copy for your website, proposal text, email drafts                               |
-| **Research output**             | `research/synthesis.md`                     | Competitive positioning on your site. Informs proposal content.                            |
-| **Advisory board pattern**      | `evaluation/TEMPLATE-advisory-board.md`     | Expert roast panel that critiques your site before shipping                                |
-| **Chief of Staff triage rules** | CLAUDE.md "Chief of Staff Operating Manual" | Lead scoring: HIGH/MEDIUM/LOW using the same framework                                     |
+| **Lead scoring rules**          | CLAUDE.md "Lead Scoring Rules" section      | Lead scoring: HIGH/MEDIUM/LOW based on your services and ideal clients                     |
 | **Telegram bot token**          | From Day 1 setup                            | Lead alerts — your phone buzzes when visitors request proposals                            |
-| **Gmail account**               | Created during Day 1 pre-work               | Chief of Staff email triage. Day 2 email sending uses Resend (set up in Step 4C).          |
 
 ### Quick verification (5 min)
 
@@ -62,12 +58,12 @@ If something's missing, spend 5 minutes enriching it now. It's easier to add con
 | Time          | Step                        | What's Happening                                                       | Day 1 Team Used                                      |
 | ------------- | --------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------- |
 | 10:00 – 10:15 | Kickoff                     | Recap, verify, set the stage                                           | —                                                    |
-| 10:15 – 11:45 | **Step 1: Brand & Design**  | Brief → 2 copy variations → 2 designs → compare → combine → logo      | Comms Lead (voice), Researcher (positioning)         |
+| 10:15 – 11:45 | **Step 1: Brand & Design**  | Brief → 2 copy variations → 2 designs → compare → combine → logo      | CLAUDE.md (voice, services)                          |
 | 11:45 – 11:55 | _Break_                     |                                                                        |                                                      |
-| 11:55 – 12:45 | **Step 2: Roast & Fix**     | Expert roast → prioritized fixes → polished site                       | Advisory Board (roast pattern)                       |
+| 11:55 – 12:45 | **Step 2: Roast & Fix**     | Expert roast → prioritized fixes → polished site                       | —                                                    |
 | 12:45 – 1:25  | _Lunch_                     |                                                                        |                                                      |
-| 1:25 – 2:10   | **Step 3: The Chatbot**     | Chat widget + Claude API + voice fingerprint → test locally            | Comms Lead (voice), CLAUDE.md (context)              |
-| 2:10 – 3:25   | **Step 4: Proposal Engine** | Agentic tool use → PDF → email → lead scoring → test locally           | Chief of Staff (triage rules), Telegram bot (alerts) |
+| 1:25 – 2:10   | **Step 3: The Chatbot**     | Chat widget + Claude API + voice fingerprint → test locally            | CLAUDE.md (voice, context)                           |
+| 2:10 – 3:25   | **Step 4: Proposal Engine** | Agentic tool use → PDF → email → lead scoring → test locally           | Lead scoring rules, Telegram bot (alerts)            |
 | 3:25 – 3:35   | _Break_                     |                                                                        |                                                      |
 | 3:35 – 4:35   | **Step 5: Deploy & Demo**   | Push to GitHub → deploy to Vercel → add env vars → debug → live demo  | Everything                                           |
 | 4:35 – 4:55   | **Show & Tell**             | Live demos, live URLs, war stories                                    | Everything                                           |
@@ -135,7 +131,7 @@ claude
 
 ## Kickoff (10:00 – 10:15)
 
-Yesterday you built a team — researcher, comms lead, advisory board, chief of staff. Today you give that team a real project.
+Yesterday you built a team — researcher, comms lead, and connected it all to your phone. Today you give that team a real project.
 
 **The brief:** Build a branded website that works as your AI sales agent. A visitor finds your site, chats with an AI that sounds like you, describes what they need, and receives a personalized proposal in their inbox — all without you lifting a finger. Your phone buzzes with a lead alert. You review the proposal. You approve it. The visitor gets it. That's what we're shipping today.
 
@@ -156,12 +152,11 @@ Tell Claude what you're building. Be specific — the more context, the better t
 ```
 I want to build a professional branded website for my practice/business.
 Read my CLAUDE.md for who I am, what I offer, and my voice.
-Read research/synthesis.md for competitive context.
 
 Based on this, create a brief for my website:
 - What the hero section should say (in MY voice, not a template)
 - What services/offerings to highlight (from my "What I Offer" section)
-- What makes me different (from my research + CLAUDE.md)
+- What makes me different (from my CLAUDE.md)
 - What the CTA should be
 - Who the target visitor is
 
@@ -201,8 +196,7 @@ Now generate two visually distinct websites. Instead of picking a style yourself
 
 ```
 Read my CLAUDE.md — my identity, industry, voice, the kind of clients I
-work with. Read the copy variations you just wrote. Read research/synthesis.md
-for competitive context.
+work with. Read the copy variations you just wrote.
 
 Based on all of this, propose TWO design directions that would resonate
 with my target audience and reflect my brand personality. Explain each
@@ -273,8 +267,8 @@ Make sure the colors work with the rest of the design.
 Your Day 1 research feeds back in here.
 
 ```
-Read research/synthesis.md. Based on what my researcher found about
-competitors and market positioning:
+Read my CLAUDE.md. Based on what you know about my services, clients,
+and market positioning:
 
 1. Is my hero headline differentiated enough from competitors?
 2. Is my services section missing anything the market expects?
@@ -303,11 +297,9 @@ _Break — 10 min_
 
 **What you're building:** A polished, production-quality website — tested locally, ready to deploy later.
 
-**Day 1 artifact used:** Advisory board pattern — same multi-agent evaluation, now applied as a critique panel.
-
 ### 2A: The Expert Roast (25 min)
 
-Yesterday you built an advisory board to evaluate a decision. Today, same pattern, different job — your advisors are now critics reviewing your website.
+Before shipping, get your site reviewed by a panel of experts. Claude assembles 5 specialists who each critique your site from their angle — then they discuss and produce a prioritized fix list.
 
 ```
 I need you to review the website at my-site/index.html by assembling a
@@ -404,7 +396,7 @@ ARCHITECTURE (API key safety):
 - Create api/chat.js — a serverless function (runs server-side)
 - The function calls OpenRouter's API (https://openrouter.ai/api/v1/chat/completions)
 - It reads OPENROUTER_API_KEY from process.env
-- Use model "anthropic/claude-sonnet-4" (or any model available on OpenRouter)
+- Use model "anthropic/claude-sonnet-4.6" (or any model available on OpenRouter)
 - Frontend calls /api/chat — the API key NEVER appears in client-side code
 
 SYSTEM PROMPT:
@@ -844,7 +836,7 @@ Now every `git push` automatically updates your live site. The agent runs 24/7 w
 
 **2. What I built — show the live URL (1 min)** — Pull up your Vercel URL. Walk through the site. Click the chat widget. If the agent pipeline works, trigger it — show the proposal PDF arriving, your phone buzzing.
 
-**3. The compound — how Day 1 fed Day 2 (45 sec)** — Pick ONE example: voice fingerprint → chatbot voice, research → site positioning, triage rules → lead scoring, advisory board → roast panel.
+**3. The compound — how Day 1 fed Day 2 (45 sec)** — Pick ONE example: voice fingerprint → chatbot voice, CLAUDE.md → site copy, lead scoring rules → proposal engine.
 
 **4. Where I got stuck (30 sec)** — What broke? What fixed it?
 
@@ -863,10 +855,9 @@ Now every `git push` automatically updates your live site. The agent runs 24/7 w
 | CLAUDE.md                   | →   | Chatbot system prompt — answers like you                         |
 | Voice fingerprint           | →   | Proposals and emails written in your voice                       |
 | Researcher team             | →   | Competitive positioning on your site                             |
-| Advisory board              | →   | Expert roast panel that refined your site                        |
-| Chief of Staff triage rules | →   | Claude scores leads using YOUR rules (no regex — real reasoning) |
+| Lead scoring rules          | →   | Claude scores leads using YOUR rules (no regex — real reasoning) |
 | Telegram bot                | →   | Owner alerts — phone buzzes with lead summary + proposal PDF     |
-| Comms Lead skill            | →   | Website copy written in your voice                               |
+| Voice fingerprint           | →   | Website copy, chatbot, and proposals all sound like you          |
 
 Without Day 1, today would have produced a generic website with a chatbox.
 

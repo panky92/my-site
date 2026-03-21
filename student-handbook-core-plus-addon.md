@@ -31,12 +31,8 @@ Today's build runs on everything you built yesterday. Here's a quick check:
 | **CLAUDE.md**                   | Root of your project                        | Chatbot system prompt — answers visitors using your context                                |
 | **"What I Offer" section**      | Inside CLAUDE.md                            | Chatbot explains your services. Proposals scope recommendations.                           |
 | **Voice fingerprint**           | CLAUDE.md "My Writing Voice" section        | Chatbot speaks like you. Proposals written like you. Emails sound like you.                |
-| **Comms Lead skill**            | `.claude/skills/write-in-my-voice/`         | Generates copy for your website, proposal text, email drafts                               |
-| **Research output**             | `research/synthesis.md`                     | Competitive positioning on your site. Informs proposal content.                            |
-| **Advisory board pattern**      | `evaluation/TEMPLATE-advisory-board.md`     | Expert roast panel — available in Power Ups to polish your site before shipping             |
-| **Chief of Staff triage rules** | CLAUDE.md "Chief of Staff Operating Manual" | Lead scoring: HIGH/MEDIUM/LOW using the same framework                                     |
+| **Lead scoring rules**          | CLAUDE.md "Lead Scoring Rules" section      | Lead scoring: HIGH/MEDIUM/LOW based on your services and ideal clients                     |
 | **Telegram bot token**          | From Day 1 setup                            | Lead alerts — your phone buzzes when visitors request proposals                            |
-| **Gmail account**               | Created during Day 1 pre-work               | Chief of Staff email triage. Day 2 email sending uses Resend (set up in Step 3C).          |
 
 ### Quick verification (5 min)
 
@@ -47,7 +43,7 @@ Read my CLAUDE.md. Confirm you can see:
 1. Who I am and what I do
 2. My "What I Offer" section (services, expertise, typical clients)
 3. My "Writing Voice" section (tone, patterns, quirks)
-4. My "Chief of Staff Operating Manual" (triage rules, key people)
+4. My key people, priorities, and projects
 
 Tell me if anything is missing or too thin for building a website and chatbot today.
 ```
@@ -61,14 +57,14 @@ If something's missing, spend 5 minutes enriching it now. It's easier to add con
 | Time          | What                          | What's Happening                                                      | Day 1 Team Used                                      |
 | ------------- | ----------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------- |
 | 10:00 – 10:15 | Kickoff                       | Recap, verify, set the stage                                          | —                                                    |
-| 10:15 – 12:10 | **Step 1: Brand & Design**    | Brief → 2 copy variations → design → review → logo → research polish  | Comms Lead (voice), Researcher (positioning)         |
+| 10:15 – 12:10 | **Step 1: Brand & Design**    | Brief → 2 copy variations → design → review → logo → expert roast     | CLAUDE.md (voice, services)                          |
 | 12:10 – 12:20 | _Break_                       |                                                                       |                                                      |
-| 12:20 – 1:05  | **Step 2: The Chatbot**       | Chat widget + Claude API + voice fingerprint → test locally           | Comms Lead (voice), CLAUDE.md (context)              |
+| 12:20 – 1:05  | **Step 2: The Chatbot**       | Chat widget + Claude API + voice fingerprint → test locally           | CLAUDE.md (voice, context)                           |
 | 1:05 – 1:45   | _Lunch_                       |                                                                       |                                                      |
-| 1:45 – 2:40   | **Step 3: Proposal Engine**   | Agentic tool use → PDF → email → lead alert → test locally            | Chief of Staff (triage rules), Telegram bot (alerts) |
+| 1:45 – 2:40   | **Step 3: Proposal Engine**   | Agentic tool use → PDF → email → lead alert → test locally            | Lead scoring rules, Telegram bot (alerts)            |
 | 2:40 – 2:50   | _Break_                       |                                                                       |                                                      |
 | 2:50 – 4:00   | **Step 4: Deploy & Demo**     | Push to GitHub → deploy to Vercel → add env vars → debug → live demo  | Everything                                           |
-| 4:00 – 4:30   | **Power Ups**                 | Roast & Fix, lead storage, second design                              | Advisory Board, Supabase                             |
+| 4:00 – 4:30   | **Power Ups**                 | Research polish, lead storage, second design                          | Researcher, Supabase                                 |
 | 4:30 – 4:55   | **Show & Tell**               | Live demos, live URLs, war stories                                    | Everything                                           |
 | 4:55 – 5:00   | **Close**                     | What you built. Monday habit.                                         |                                                      |
 
@@ -136,7 +132,7 @@ claude
 
 ## Kickoff (10:00 – 10:15)
 
-Yesterday you built a team — researcher, comms lead, advisory board, chief of staff. Today you give that team a real project.
+Yesterday you built a team — researcher, comms lead, and connected it all to your phone. Today you give that team a real project.
 
 **The brief:** Build a branded website that works as your AI sales agent. A visitor finds your site, chats with an AI that sounds like you, describes what they need, and receives a personalized proposal in their inbox — all without you lifting a finger. Your phone buzzes with a lead alert. You review the proposal. You approve it. The visitor gets it. That's what we're shipping today.
 
@@ -157,12 +153,11 @@ Tell Claude what you're building. Be specific — the more context, the better t
 ```
 I want to build a professional branded website for my practice/business.
 Read my CLAUDE.md for who I am, what I offer, and my voice.
-Read research/synthesis.md for competitive context.
 
 Based on this, create a brief for my website:
 - What the hero section should say (in MY voice, not a template)
 - What services/offerings to highlight (from my "What I Offer" section)
-- What makes me different (from my research + CLAUDE.md)
+- What makes me different (from my CLAUDE.md)
 - What the CTA should be
 - Who the target visitor is
 
@@ -202,8 +197,7 @@ Now build the actual website. Instead of picking a style yourself, let Claude re
 
 ```
 Read my CLAUDE.md — my identity, industry, voice, the kind of clients I
-work with. Read the copy variations you just wrote. Read research/synthesis.md
-for competitive context.
+work with. Read the copy variations you just wrote.
 
 Based on all of this, propose a design direction that would resonate with
 my target audience and reflect my brand personality. Explain it in 2-3
@@ -231,23 +225,7 @@ Save as my-site/index.html with styles.css in the same directory.
 
 Open it in your browser: `open my-site/index.html`
 
-### 1D: Review & Refine (10 min)
-
-Look at the site. Be specific about what needs work.
-
-```
-I'm looking at the site. Here's what I want to change:
-- [Hero feels too generic — make it more personal]
-- [Services section needs more detail on X]
-- [Colors are too muted — make the CTA stand out more]
-- [Add more whitespace between sections]
-
-Apply these changes to my-site/index.html.
-```
-
-One round of iteration. Get it to "good enough" — the logo and research polish steps will refine it further.
-
-### 1E: Logo Generation (15 min)
+### 1D: Logo Generation (15 min)
 
 ```
 Generate 2 SVG logo options for my brand:
@@ -270,20 +248,43 @@ Use logo [1/2]. Add it to the header of my-site/index.html as an inline SVG.
 Make sure the colors work with the rest of the design.
 ```
 
-### 1F: Research-Informed Polish (15 min)
+### 1E: Expert Roast & Fix (40 min)
 
-Your Day 1 research feeds back in here. This is the "everything compounds" moment — the research your team ran yesterday now sharpens your site's positioning.
+Before shipping, get your site reviewed by a panel of experts. Claude assembles 5 specialists who each critique your site from their angle — then they discuss and produce a prioritized fix list.
 
 ```
-Read research/synthesis.md. Based on what my researcher found about
-competitors and market positioning:
+I need you to review the website at my-site/index.html by assembling a
+5-person expert panel. Each expert reviews independently, then they
+discuss and produce a prioritized fix list.
 
-1. Is my hero headline differentiated enough from competitors?
-2. Is my services section missing anything the market expects?
-3. Is there a credibility signal I should add (industry stat, framework, methodology)?
+THE PANEL:
+1. **Shreya Iyer, Brand Strategist** — Is the copy distinctive? Does it
+   sound like a real person or like AI? Would she remember this site?
+2. **Marcus Tan, Product Designer** — Visual hierarchy, CTAs, whitespace,
+   mobile responsiveness, load time. What's broken?
+3. **Ankit Verma, Growth Marketer** — 5-second test: do I understand the
+   value prop? Would I convert? Where do visitors drop off?
+4. **Meera Nambiar, Target Customer** — She's the exact person this site
+   is for. Is she convinced? What questions does she still have?
+5. **Rohit Kapoor, Angel Investor** — Positioning credibility. Does this
+   look like someone worth betting on? Or is it generic?
 
-Suggest specific copy changes. Reference the research findings.
-Apply the changes to my-site/index.html.
+INSTRUCTIONS:
+1. Each expert writes their review independently to roast/[name]-review.md
+2. After all 5, they discuss — create roast/panel-discussion.md
+3. Produce roast/fix-list.md with issues ranked:
+   - P0: Launch blockers (fix before deploying)
+   - P1: Important (fix soon)
+   - P2: Nice to have
+
+Go. Be harsh. I'd rather fix real problems now.
+```
+
+Apply the fixes:
+
+```
+Read roast/fix-list.md. Apply all P0 fixes to my-site/index.html.
+Then apply the top 3 P1 fixes. Stop there — we're shipping.
 ```
 
 ### Step 1 Checkpoint
@@ -292,7 +293,8 @@ Apply the changes to my-site/index.html.
 - [ ] Website built at `my-site/index.html` — responsive, professional
 - [ ] Reviewed and refined — it looks like a real site
 - [ ] Logo generated and integrated into the header
-- [ ] Research-informed polish applied — positioning sharpened by Day 1 research
+- [ ] Expert roast completed — 5 reviewers, prioritized fix list
+- [ ] P0 and top P1 fixes applied
 - [ ] Open `my-site/index.html` — you'd show this to a client
 
 ---
@@ -340,7 +342,7 @@ ARCHITECTURE (API key safety):
 - Create api/chat.js — a serverless function (runs server-side)
 - The function calls OpenRouter's API (https://openrouter.ai/api/v1/chat/completions)
 - It reads OPENROUTER_API_KEY from process.env
-- Use model "anthropic/claude-sonnet-4" (or any model available on OpenRouter)
+- Use model "anthropic/claude-sonnet-4.6" (or any model available on OpenRouter)
 - Frontend calls /api/chat — the API key NEVER appears in client-side code
 
 SYSTEM PROMPT:
@@ -430,7 +432,7 @@ _Lunch — 40 min_
 
 **What you're building:** The chatbot gains a second mode — it gathers requirements, generates a personalized proposal PDF, emails it to the visitor, and alerts you on Telegram.
 
-**Day 1 artifacts used:** Voice fingerprint (proposal voice), "What I Offer" (proposal scoping), Chief of Staff triage rules (lead scoring), Telegram bot (owner alerts)
+**Day 1 artifacts used:** Voice fingerprint (proposal voice), "What I Offer" (proposal scoping), Telegram bot (owner alerts)
 
 ### 3A: Add Intake Mode to the Chatbot (20 min)
 
@@ -507,7 +509,18 @@ Read api/generate-proposal.js. Explain to me in plain language:
 
 Take a minute to understand the architecture. This is the same pattern behind Claude Code itself — an LLM with tools, running in a loop until the job is done.
 
-**Step 3: Customize it with YOUR identity**
+**Step 3: Add lead scoring rules to CLAUDE.md**
+
+The proposal engine scores every lead as HIGH / MEDIUM / LOW. Claude needs to know what those mean *for your business*. Run this:
+
+```
+Read my CLAUDE.md — specifically "What I Offer" and my services.
+Add a "## Lead Scoring Rules" section that defines HIGH / MEDIUM / LOW
+leads based on my services, ideal clients, and pricing. Be specific
+to my business, not generic.
+```
+
+**Step 4: Customize it with YOUR identity**
 
 The file has `[CUSTOMIZE]` markers where your data needs to go. Tell Claude:
 
@@ -516,7 +529,7 @@ Read api/generate-proposal.js and my CLAUDE.md. The file has [CUSTOMIZE]
 markers. Replace them:
 
 1. The AGENT_SYSTEM_PROMPT — replace the placeholder with my real identity,
-   voice, services, pricing, and lead triage rules from my CLAUDE.md
+   voice, services, pricing, and lead scoring rules from my CLAUDE.md
 2. The PDF cover page — my real name and tagline
 3. The PDF footer — my real contact info
 4. The PDF brand colors — match my website's color scheme
@@ -724,59 +737,31 @@ Your site is live. Your agent is running. Everything below is optional — pick 
 
 ---
 
-### Power Up: Roast & Fix (40 min)
+### Power Up: Research-Informed Polish (15 min)
 
-**What this adds:** Your Day 1 advisory board pattern, applied as a critique panel to improve your live site.
-
-Yesterday you built an advisory board to evaluate a decision. Same pattern, different job — your advisors are now critics reviewing your deployed website.
+**What this adds:** Your Day 1 research sharpens your site's positioning — the "everything compounds" moment.
 
 ```
-I need you to review the website at my-site/index.html by assembling a
-5-person expert panel. Each expert reviews independently, then they
-discuss and produce a prioritized fix list.
+Read my CLAUDE.md. Based on what you know about my services, clients,
+and market positioning:
 
-THE PANEL:
-1. **Shreya Iyer, Brand Strategist** — Is the copy distinctive? Does it
-   sound like a real person or like AI? Would she remember this site?
-2. **Marcus Tan, Product Designer** — Visual hierarchy, CTAs, whitespace,
-   mobile responsiveness, load time. What's broken?
-3. **Ankit Verma, Growth Marketer** — 5-second test: do I understand the
-   value prop? Would I convert? Where do visitors drop off?
-4. **Meera Nambiar, Target Customer** — She's the exact person this site
-   is for. Is she convinced? What questions does she still have?
-5. **Rohit Kapoor, Angel Investor** — Positioning credibility. Does this
-   look like someone worth betting on? Or is it generic?
+1. Is my hero headline differentiated enough from competitors?
+2. Is my services section missing anything the market expects?
+3. Is there a credibility signal I should add (industry stat, framework, methodology)?
 
-INSTRUCTIONS:
-1. Each expert writes their review independently to roast/[name]-review.md
-2. After all 5, they discuss — create roast/panel-discussion.md
-3. Produce roast/fix-list.md with issues ranked:
-   - P0: Launch blockers (fix before deploying)
-   - P1: Important (fix soon)
-   - P2: Nice to have
-
-Go. Be harsh. I'd rather fix real problems now.
-```
-
-Apply the fixes:
-
-```
-Read roast/fix-list.md. Apply all P0 fixes to my-site/index.html.
-Then apply the top 3 P1 fixes. Stop there — we're shipping.
+Suggest specific copy changes. Reference the research findings.
+Apply the changes to my-site/index.html.
 ```
 
 Push and redeploy:
 
 ```bash
 cd my-site
-git add -A && git commit -m "Apply roast fixes" && git push
+git add -A && git commit -m "Research-informed polish" && git push
 ```
 
-Vercel will auto-redeploy. Check your live URL — the fixes should be live in under a minute.
-
 **Checkpoint:**
-- [ ] Expert roast completed — 5 reviewers, prioritized fix list
-- [ ] P0 and top P1 fixes applied
+- [ ] Research findings applied to site positioning
 - [ ] Changes pushed and live on Vercel
 
 ---
@@ -932,7 +917,7 @@ Push and redeploy if you make changes to `my-site/`.
 
 **2. What I built — show the live URL (1 min)** — Pull up your Vercel URL. Walk through the site. Click the chat widget. If the agent pipeline works, trigger it — show the proposal PDF arriving, your phone buzzing.
 
-**3. The compound — how Day 1 fed Day 2 (45 sec)** — Pick ONE example: voice fingerprint → chatbot voice, research → site positioning, triage rules → lead scoring, advisory board → roast panel.
+**3. The compound — how Day 1 fed Day 2 (45 sec)** — Pick ONE example: voice fingerprint → chatbot voice, CLAUDE.md → site copy, lead scoring rules → proposal engine.
 
 **4. Where I got stuck (30 sec)** — What broke? What fixed it?
 
@@ -951,10 +936,9 @@ Push and redeploy if you make changes to `my-site/`.
 | CLAUDE.md                   | →   | Chatbot system prompt — answers like you                         |
 | Voice fingerprint           | →   | Proposals and emails written in your voice                       |
 | Researcher team             | →   | Competitive positioning on your site                             |
-| Advisory board              | →   | Expert roast panel that refined your site (Power Up)             |
-| Chief of Staff triage rules | →   | Claude scores leads using YOUR rules (no regex — real reasoning) |
+| Lead scoring rules          | →   | Claude scores leads using YOUR rules (no regex — real reasoning) |
 | Telegram bot                | →   | Owner alerts — phone buzzes with lead summary + proposal PDF     |
-| Comms Lead skill            | →   | Website copy written in your voice                               |
+| Voice fingerprint           | →   | Website copy, chatbot, and proposals all sound like you          |
 
 Without Day 1, today would have produced a generic website with a chatbox.
 
@@ -974,7 +958,7 @@ With Day 1, today produced a **personal sales agent that speaks in your voice, q
 - [ ] **Research polish** — competitive differentiation sharpened by Day 1 research
 
 **Power Ups (if completed):**
-- [ ] **Expert roast** — advisory board critique + fixes applied
+- [ ] **Expert roast** — panel critique + fixes applied
 - [ ] **CRM storage** — leads stored in Supabase with scores
 - [ ] **Second design** — compared and combined best elements
 
