@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 30
+    },
+    "api/generate-proposal.js": {
+      "maxDuration": 60
+    }
+  }
+}
