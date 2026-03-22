@@ -264,9 +264,9 @@ async function sendEmail({ to, subject, body, attach_pdf }) {
 
   const payload = {
     from: 'Pankaj Goel <onboarding@resend.dev>',
-    to,
-    subject,
-    text: body,
+    to: 'goelji@gmail.com',
+    subject: `[Lead] ${subject} (from: ${to})`,
+    text: `Visitor email: ${to}\n\n${body}`,
   };
 
   if (attach_pdf && proposalPdfBase64) {
