@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>student-handbook-core-plus-addon</title>
+  <title>student-handbook</title>
   <style>
     html {
       line-height: 1.5;
@@ -213,7 +213,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">student-handbook-core-plus-addon</h1>
+<h1 class="title">student-handbook</h1>
 </header>
 <h1 id="day-2-your-teams-first-project-ship-your-ai-sales-engine">Day 2: Your Team’s First Project — Ship Your AI Sales Engine</h1>
 <blockquote>
@@ -265,34 +265,14 @@
 <td>Chatbot speaks like you. Proposals written like you. Emails sound like you.</td>
 </tr>
 <tr class="even">
-<td><strong>Comms Lead skill</strong></td>
-<td><code>.claude/skills/write-in-my-voice/</code></td>
-<td>Generates copy for your website, proposal text, email drafts</td>
+<td><strong>Lead scoring rules</strong></td>
+<td>CLAUDE.md “Lead Scoring Rules” section</td>
+<td>Lead scoring: HIGH/MEDIUM/LOW based on your services and ideal clients</td>
 </tr>
 <tr class="odd">
-<td><strong>Research output</strong></td>
-<td><code>research/synthesis.md</code></td>
-<td>Competitive positioning on your site. Informs proposal content.</td>
-</tr>
-<tr class="even">
-<td><strong>Advisory board pattern</strong></td>
-<td><code>evaluation/TEMPLATE-advisory-board.md</code></td>
-<td>Expert roast panel — available in Power Ups to polish your site before shipping</td>
-</tr>
-<tr class="odd">
-<td><strong>Chief of Staff triage rules</strong></td>
-<td>CLAUDE.md “Chief of Staff Operating Manual”</td>
-<td>Lead scoring: HIGH/MEDIUM/LOW using the same framework</td>
-</tr>
-<tr class="even">
 <td><strong>Telegram bot token</strong></td>
 <td>From Day 1 setup</td>
 <td>Lead alerts — your phone buzzes when visitors request proposals</td>
-</tr>
-<tr class="odd">
-<td><strong>Gmail account</strong></td>
-<td>Created during Day 1 pre-work</td>
-<td>Chief of Staff email triage. Day 2 email sending uses Resend (set up in Step 3C).</td>
 </tr>
 </tbody>
 </table>
@@ -302,7 +282,7 @@
 1. Who I am and what I do
 2. My &quot;What I Offer&quot; section (services, expertise, typical clients)
 3. My &quot;Writing Voice&quot; section (tone, patterns, quirks)
-4. My &quot;Chief of Staff Operating Manual&quot; (triage rules, key people)
+4. My key people, priorities, and projects
 
 Tell me if anything is missing or too thin for building a website and chatbot today.</code></pre>
 <p>If something’s missing, spend 5 minutes enriching it now. It’s easier to add context now than to debug a generic-sounding chatbot later.</p>
@@ -333,8 +313,8 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 <tr class="even">
 <td>10:15 – 12:10</td>
 <td><strong>Step 1: Brand &amp; Design</strong></td>
-<td>Brief → 2 copy variations → design → review → logo → research polish</td>
-<td>Comms Lead (voice), Researcher (positioning)</td>
+<td>Brief → 2 copy variations → design → review → logo → expert roast</td>
+<td>CLAUDE.md (voice, services)</td>
 </tr>
 <tr class="odd">
 <td>12:10 – 12:20</td>
@@ -346,7 +326,7 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 <td>12:20 – 1:05</td>
 <td><strong>Step 2: The Chatbot</strong></td>
 <td>Chat widget + Claude API + voice fingerprint → test locally</td>
-<td>Comms Lead (voice), CLAUDE.md (context)</td>
+<td>CLAUDE.md (voice, context)</td>
 </tr>
 <tr class="odd">
 <td>1:05 – 1:45</td>
@@ -358,7 +338,7 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 <td>1:45 – 2:40</td>
 <td><strong>Step 3: Proposal Engine</strong></td>
 <td>Agentic tool use → PDF → email → lead alert → test locally</td>
-<td>Chief of Staff (triage rules), Telegram bot (alerts)</td>
+<td>Lead scoring rules, Telegram bot (alerts)</td>
 </tr>
 <tr class="odd">
 <td>2:40 – 2:50</td>
@@ -375,8 +355,8 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 <tr class="odd">
 <td>4:00 – 4:30</td>
 <td><strong>Power Ups</strong></td>
-<td>Roast &amp; Fix, lead storage, second design</td>
-<td>Advisory Board, Supabase</td>
+<td>Research polish, lead storage, second design</td>
+<td>Researcher, Supabase</td>
 </tr>
 <tr class="even">
 <td>4:30 – 4:55</td>
@@ -429,7 +409,7 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 </blockquote>
 <hr />
 <h2 id="kickoff-1000-1015">Kickoff (10:00 – 10:15)</h2>
-<p>Yesterday you built a team — researcher, comms lead, advisory board, chief of staff. Today you give that team a real project.</p>
+<p>Yesterday you built a team — researcher, comms lead, and connected it all to your phone. Today you give that team a real project.</p>
 <p><strong>The brief:</strong> Build a branded website that works as your AI sales agent. A visitor finds your site, chats with an AI that sounds like you, describes what they need, and receives a personalized proposal in their inbox — all without you lifting a finger. Your phone buzzes with a lead alert. You review the proposal. You approve it. The visitor gets it. That’s what we’re shipping today.</p>
 <p>Make sure you have your <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code> from Day 1 handy — you’ll need them in Step 3 for lead alerts.</p>
 <hr />
@@ -440,12 +420,11 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 <p>Tell Claude what you’re building. Be specific — the more context, the better the output.</p>
 <pre><code>I want to build a professional branded website for my practice/business.
 Read my CLAUDE.md for who I am, what I offer, and my voice.
-Read research/synthesis.md for competitive context.
 
 Based on this, create a brief for my website:
 - What the hero section should say (in MY voice, not a template)
 - What services/offerings to highlight (from my &quot;What I Offer&quot; section)
-- What makes me different (from my research + CLAUDE.md)
+- What makes me different (from my CLAUDE.md)
 - What the CTA should be
 - Who the target visitor is
 
@@ -473,8 +452,7 @@ Write both to separate files:
 <h3 id="c-design-your-site-20-min">1C: Design Your Site (20 min)</h3>
 <p>Now build the actual website. Instead of picking a style yourself, let Claude read your context and propose a design direction that fits <strong>who you are</strong>.</p>
 <pre><code>Read my CLAUDE.md — my identity, industry, voice, the kind of clients I
-work with. Read the copy variations you just wrote. Read research/synthesis.md
-for competitive context.
+work with. Read the copy variations you just wrote.
 
 Based on all of this, propose a design direction that would resonate with
 my target audience and reflect my brand personality. Explain it in 2-3
@@ -495,17 +473,7 @@ The site must be:
 
 Save as my-site/index.html with styles.css in the same directory.</code></pre>
 <p>Open it in your browser: <code>open my-site/index.html</code></p>
-<h3 id="d-review-refine-10-min">1D: Review &amp; Refine (10 min)</h3>
-<p>Look at the site. Be specific about what needs work.</p>
-<pre><code>I&#39;m looking at the site. Here&#39;s what I want to change:
-- [Hero feels too generic — make it more personal]
-- [Services section needs more detail on X]
-- [Colors are too muted — make the CTA stand out more]
-- [Add more whitespace between sections]
-
-Apply these changes to my-site/index.html.</code></pre>
-<p>One round of iteration. Get it to “good enough” — the logo and research polish steps will refine it further.</p>
-<h3 id="e-logo-generation-15-min">1E: Logo Generation (15 min)</h3>
+<h3 id="d-logo-generation-15-min">1D: Logo Generation (15 min)</h3>
 <pre><code>Generate 2 SVG logo options for my brand:
 - Logo 1: A mark (icon) + wordmark — minimal, modern
 - Logo 2: A typographic logo — distinctive lettering, no icon
@@ -520,17 +488,36 @@ backgrounds side by side for comparison.</code></pre>
 <p>Pick one and integrate it:</p>
 <pre><code>Use logo [1/2]. Add it to the header of my-site/index.html as an inline SVG.
 Make sure the colors work with the rest of the design.</code></pre>
-<h3 id="f-research-informed-polish-15-min">1F: Research-Informed Polish (15 min)</h3>
-<p>Your Day 1 research feeds back in here. This is the “everything compounds” moment — the research your team ran yesterday now sharpens your site’s positioning.</p>
-<pre><code>Read research/synthesis.md. Based on what my researcher found about
-competitors and market positioning:
+<h3 id="e-expert-roast-fix-40-min">1E: Expert Roast &amp; Fix (40 min)</h3>
+<p>Before shipping, get your site reviewed by a panel of experts. Claude assembles 5 specialists who each critique your site from their angle — then they discuss and produce a prioritized fix list.</p>
+<pre><code>I need you to review the website at my-site/index.html by assembling a
+5-person expert panel. Each expert reviews independently, then they
+discuss and produce a prioritized fix list.
 
-1. Is my hero headline differentiated enough from competitors?
-2. Is my services section missing anything the market expects?
-3. Is there a credibility signal I should add (industry stat, framework, methodology)?
+THE PANEL:
+1. **Shreya Iyer, Brand Strategist** — Is the copy distinctive? Does it
+   sound like a real person or like AI? Would she remember this site?
+2. **Marcus Tan, Product Designer** — Visual hierarchy, CTAs, whitespace,
+   mobile responsiveness, load time. What&#39;s broken?
+3. **Ankit Verma, Growth Marketer** — 5-second test: do I understand the
+   value prop? Would I convert? Where do visitors drop off?
+4. **Meera Nambiar, Target Customer** — She&#39;s the exact person this site
+   is for. Is she convinced? What questions does she still have?
+5. **Rohit Kapoor, Angel Investor** — Positioning credibility. Does this
+   look like someone worth betting on? Or is it generic?
 
-Suggest specific copy changes. Reference the research findings.
-Apply the changes to my-site/index.html.</code></pre>
+INSTRUCTIONS:
+1. Each expert writes their review independently to roast/[name]-review.md
+2. After all 5, they discuss — create roast/panel-discussion.md
+3. Produce roast/fix-list.md with issues ranked:
+   - P0: Launch blockers (fix before deploying)
+   - P1: Important (fix soon)
+   - P2: Nice to have
+
+Go. Be harsh. I&#39;d rather fix real problems now.</code></pre>
+<p>Apply the fixes:</p>
+<pre><code>Read roast/fix-list.md. Apply all P0 fixes to my-site/index.html.
+Then apply the top 3 P1 fixes. Stop there — we&#39;re shipping.</code></pre>
 <h3 id="step-1-checkpoint">Step 1 Checkpoint</h3>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" />
@@ -542,7 +529,9 @@ Reviewed and refined — it looks like a real site</li>
 <li><input type="checkbox" disabled="" />
 Logo generated and integrated into the header</li>
 <li><input type="checkbox" disabled="" />
-Research-informed polish applied — positioning sharpened by Day 1 research</li>
+Expert roast completed — 5 reviewers, prioritized fix list</li>
+<li><input type="checkbox" disabled="" />
+P0 and top P1 fixes applied</li>
 <li><input type="checkbox" disabled="" />
 Open <code>my-site/index.html</code> — you’d show this to a client</li>
 </ul>
@@ -578,7 +567,7 @@ ARCHITECTURE (API key safety):
 - Create api/chat.js — a serverless function (runs server-side)
 - The function calls OpenRouter&#39;s API (https://openrouter.ai/api/v1/chat/completions)
 - It reads OPENROUTER_API_KEY from process.env
-- Use model &quot;anthropic/claude-sonnet-4&quot; (or any model available on OpenRouter)
+- Use model &quot;anthropic/claude-sonnet-4.6&quot; (or any model available on OpenRouter)
 - Frontend calls /api/chat — the API key NEVER appears in client-side code
 
 SYSTEM PROMPT:
@@ -655,7 +644,7 @@ Tested on mobile (use your local IP, e.g. <code>http://192.168.x.x:3000</code>)
 <p><strong>Back from lunch?</strong> Run <code>/compact</code> again. The proposal engine is the most complex step — Claude needs a clean context window to generate and customize the code correctly.</p>
 </blockquote>
 <p><strong>What you’re building:</strong> The chatbot gains a second mode — it gathers requirements, generates a personalized proposal PDF, emails it to the visitor, and alerts you on Telegram.</p>
-<p><strong>Day 1 artifacts used:</strong> Voice fingerprint (proposal voice), “What I Offer” (proposal scoping), Chief of Staff triage rules (lead scoring), Telegram bot (owner alerts)</p>
+<p><strong>Day 1 artifacts used:</strong> Voice fingerprint (proposal voice), “What I Offer” (proposal scoping), Telegram bot (owner alerts)</p>
 <h3 id="a-add-intake-mode-to-the-chatbot-20-min">3A: Add Intake Mode to the Chatbot (20 min)</h3>
 <pre><code>Upgrade the chatbot in api/chat.js to support two modes:
 
@@ -713,13 +702,19 @@ Update both api/chat.js and the frontend chat widget.</code></pre>
 3. Where does the system prompt come from?
 4. What does sanitizeForPdf do and why is it needed?</code></pre>
 <p>Take a minute to understand the architecture. This is the same pattern behind Claude Code itself — an LLM with tools, running in a loop until the job is done.</p>
-<p><strong>Step 3: Customize it with YOUR identity</strong></p>
+<p><strong>Step 3: Add lead scoring rules to CLAUDE.md</strong></p>
+<p>The proposal engine scores every lead as HIGH / MEDIUM / LOW. Claude needs to know what those mean <em>for your business</em>. Run this:</p>
+<pre><code>Read my CLAUDE.md — specifically &quot;What I Offer&quot; and my services.
+Add a &quot;## Lead Scoring Rules&quot; section that defines HIGH / MEDIUM / LOW
+leads based on my services, ideal clients, and pricing. Be specific
+to my business, not generic.</code></pre>
+<p><strong>Step 4: Customize it with YOUR identity</strong></p>
 <p>The file has <code>[CUSTOMIZE]</code> markers where your data needs to go. Tell Claude:</p>
 <pre><code>Read api/generate-proposal.js and my CLAUDE.md. The file has [CUSTOMIZE]
 markers. Replace them:
 
 1. The AGENT_SYSTEM_PROMPT — replace the placeholder with my real identity,
-   voice, services, pricing, and lead triage rules from my CLAUDE.md
+   voice, services, pricing, and lead scoring rules from my CLAUDE.md
 2. The PDF cover page — my real name and tagline
 3. The PDF footer — my real contact info
 4. The PDF brand colors — match my website&#39;s color scheme
@@ -813,12 +808,12 @@ Lead scored and Telegram alert sent — with the proposal PDF attached</li>
 <h2 id="step-4-deploy-demo-70-min">Step 4: Deploy &amp; Demo (70 min)</h2>
 <p><strong>What you’re doing:</strong> Everything works locally. Now put it on the internet — live URL, real visitors, real agent running 24/7.</p>
 <h3 id="a-push-to-github-5-min">4A: Push to GitHub (5 min)</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div>
 <p>Create a <code>.gitignore</code> that excludes sensitive and generated files:</p>
 <pre><code>Tell Claude: Create a .gitignore that excludes node_modules, .env, and .vercel</code></pre>
 <p>Then push to GitHub:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo create my-site <span class="at">--public</span> <span class="at">--source</span><span class="op">=</span>. <span class="at">--push</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo create my-site <span class="at">--public</span> <span class="at">--source</span><span class="op">=</span>. <span class="at">--push</span></span></code></pre></div>
 <blockquote>
 <p><strong>IMPORTANT:</strong> The <code>.gitignore</code> must exclude <code>.env</code> — your API keys should never be in GitHub. Vercel gets them separately.</p>
 </blockquote>
@@ -891,42 +886,21 @@ You understand the difference between a chatbot and an agent</li>
 <h2 id="power-ups-400-430">Power Ups (4:00 – 4:30)</h2>
 <p>Your site is live. Your agent is running. Everything below is optional — pick whatever interests you, in any order.</p>
 <hr />
-<h3 id="power-up-roast-fix-40-min">Power Up: Roast &amp; Fix (40 min)</h3>
-<p><strong>What this adds:</strong> Your Day 1 advisory board pattern, applied as a critique panel to improve your live site.</p>
-<p>Yesterday you built an advisory board to evaluate a decision. Same pattern, different job — your advisors are now critics reviewing your deployed website.</p>
-<pre><code>I need you to review the website at my-site/index.html by assembling a
-5-person expert panel. Each expert reviews independently, then they
-discuss and produce a prioritized fix list.
+<h3 id="power-up-research-informed-polish-15-min">Power Up: Research-Informed Polish (15 min)</h3>
+<p><strong>What this adds:</strong> Your Day 1 research sharpens your site’s positioning — the “everything compounds” moment.</p>
+<pre><code>Read my CLAUDE.md. Based on what you know about my services, clients,
+and market positioning:
 
-THE PANEL:
-1. **Shreya Iyer, Brand Strategist** — Is the copy distinctive? Does it
-   sound like a real person or like AI? Would she remember this site?
-2. **Marcus Tan, Product Designer** — Visual hierarchy, CTAs, whitespace,
-   mobile responsiveness, load time. What&#39;s broken?
-3. **Ankit Verma, Growth Marketer** — 5-second test: do I understand the
-   value prop? Would I convert? Where do visitors drop off?
-4. **Meera Nambiar, Target Customer** — She&#39;s the exact person this site
-   is for. Is she convinced? What questions does she still have?
-5. **Rohit Kapoor, Angel Investor** — Positioning credibility. Does this
-   look like someone worth betting on? Or is it generic?
+1. Is my hero headline differentiated enough from competitors?
+2. Is my services section missing anything the market expects?
+3. Is there a credibility signal I should add (industry stat, framework, methodology)?
 
-INSTRUCTIONS:
-1. Each expert writes their review independently to roast/[name]-review.md
-2. After all 5, they discuss — create roast/panel-discussion.md
-3. Produce roast/fix-list.md with issues ranked:
-   - P0: Launch blockers (fix before deploying)
-   - P1: Important (fix soon)
-   - P2: Nice to have
-
-Go. Be harsh. I&#39;d rather fix real problems now.</code></pre>
-<p>Apply the fixes:</p>
-<pre><code>Read roast/fix-list.md. Apply all P0 fixes to my-site/index.html.
-Then apply the top 3 P1 fixes. Stop there — we&#39;re shipping.</code></pre>
+Suggest specific copy changes. Reference the research findings.
+Apply the changes to my-site/index.html.</code></pre>
 <p>Push and redeploy:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Apply roast fixes&quot;</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code></pre></div>
-<p>Vercel will auto-redeploy. Check your live URL — the fixes should be live in under a minute.</p>
-<p><strong>Checkpoint:</strong> - [ ] Expert roast completed — 5 reviewers, prioritized fix list - [ ] P0 and top P1 fixes applied - [ ] Changes pushed and live on Vercel</p>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Research-informed polish&quot;</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code></pre></div>
+<p><strong>Checkpoint:</strong> - [ ] Research findings applied to site positioning - [ ] Changes pushed and live on Vercel</p>
 <hr />
 <h3 id="power-up-lead-storage-with-supabase-20-min">Power Up: Lead Storage with Supabase (20 min)</h3>
 <p><strong>What this adds:</strong> Every lead stored in a database with scores — your own CRM. Enables dashboards and follow-up automations later.</p>
@@ -1052,7 +1026,7 @@ Update my-site/index.html with the combined version.</code></pre>
 <h3 id="the-format">The Format</h3>
 <p><strong>1. Who I am (15 sec)</strong> — Name, role, one line.</p>
 <p><strong>2. What I built — show the live URL (1 min)</strong> — Pull up your Vercel URL. Walk through the site. Click the chat widget. If the agent pipeline works, trigger it — show the proposal PDF arriving, your phone buzzing.</p>
-<p><strong>3. The compound — how Day 1 fed Day 2 (45 sec)</strong> — Pick ONE example: voice fingerprint → chatbot voice, research → site positioning, triage rules → lead scoring, advisory board → roast panel.</p>
+<p><strong>3. The compound — how Day 1 fed Day 2 (45 sec)</strong> — Pick ONE example: voice fingerprint → chatbot voice, CLAUDE.md → site copy, lead scoring rules → proposal engine.</p>
 <p><strong>4. Where I got stuck (30 sec)</strong> — What broke? What fixed it?</p>
 <p><strong>5. What I’m doing Monday (15 sec)</strong> — One specific thing. “I’m sending this URL to 3 prospects” or “I’m running /brief every morning.”</p>
 <blockquote>
@@ -1091,24 +1065,19 @@ Update my-site/index.html with the combined version.</code></pre>
 <td>Competitive positioning on your site</td>
 </tr>
 <tr class="even">
-<td>Advisory board</td>
-<td>→</td>
-<td>Expert roast panel that refined your site (Power Up)</td>
-</tr>
-<tr class="odd">
-<td>Chief of Staff triage rules</td>
+<td>Lead scoring rules</td>
 <td>→</td>
 <td>Claude scores leads using YOUR rules (no regex — real reasoning)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Telegram bot</td>
 <td>→</td>
 <td>Owner alerts — phone buzzes with lead summary + proposal PDF</td>
 </tr>
-<tr class="odd">
-<td>Comms Lead skill</td>
+<tr class="even">
+<td>Voice fingerprint</td>
 <td>→</td>
-<td>Website copy written in your voice</td>
+<td>Website copy, chatbot, and proposals all sound like you</td>
 </tr>
 </tbody>
 </table>
@@ -1116,7 +1085,7 @@ Update my-site/index.html with the combined version.</code></pre>
 <p>With Day 1, today produced a <strong>personal sales agent that speaks in your voice, qualifies leads, writes proposals, renders branded PDFs, emails them, and alerts you on your phone — running 24/7 on the internet.</strong></p>
 <h3 id="your-deliverables">Your Deliverables</h3>
 <p><strong>Core (everyone):</strong> - [ ] <strong>Published website</strong> — live URL on Vercel - [ ] <strong>AI chatbot</strong> — answers in your voice, knows your services - [ ] <strong>AI agent</strong> — Claude with tools, orchestrating autonomously - [ ] <strong>Branded proposal PDFs</strong> — generated per visitor using pdf-lib - [ ] <strong>Email automation</strong> — proposals emailed with PDF attachments - [ ] <strong>Lead scoring</strong> — Claude applies your triage rules (in Telegram alerts) - [ ] <strong>Owner alerts</strong> — Telegram notifications with proposal PDF attached - [ ] <strong>Logo</strong> — SVG logo integrated into site header - [ ] <strong>Research polish</strong> — competitive differentiation sharpened by Day 1 research</p>
-<p><strong>Power Ups (if completed):</strong> - [ ] <strong>Expert roast</strong> — advisory board critique + fixes applied - [ ] <strong>CRM storage</strong> — leads stored in Supabase with scores - [ ] <strong>Second design</strong> — compared and combined best elements</p>
+<p><strong>Power Ups (if completed):</strong> - [ ] <strong>Expert roast</strong> — panel critique + fixes applied - [ ] <strong>CRM storage</strong> — leads stored in Supabase with scores - [ ] <strong>Second design</strong> — compared and combined best elements</p>
 <h3 id="key-deliverables-achieved">Key Deliverables Achieved</h3>
 <table>
 <colgroup>
