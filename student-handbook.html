@@ -212,9 +212,6 @@
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">student-handbook</h1>
-</header>
 <h1 id="day-2-your-teams-first-project-ship-your-ai-sales-engine">Day 2: Your Team’s First Project — Ship Your AI Sales Engine</h1>
 <p><strong>Duration:</strong> Full day (10:00 AM – 5:00 PM) | <strong>Four core steps, one live URL with an AI agent by 4:00 PM — then power it up</strong></p>
 <hr />
@@ -855,7 +852,7 @@ Lead scored and Telegram alert sent — with the proposal PDF attached</li>
 </ul>
 <p>You didn’t write “step 1, step 2, step 3.” You gave Claude tools and a goal. Claude figured out the steps. That’s the difference between a script and an agent.</p>
 <blockquote>
-<p><strong>The learning moment:</strong> “You don’t give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately. Next week, you add approval mode — the agent generates the proposal, sends it to your phone for review, and waits for your ‘approve’ before sending. Start autonomous, build trust, then add guardrails where you need them.”</p>
+<p><strong>The learning moment:</strong> “You don’t give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately — but if you want a safety net, the Human-in-the-Loop Power Up adds approval mode. The agent generates the proposal, sends it to your phone for review, and waits for your ‘approve’ before sending. Start autonomous, build trust, then add guardrails where you need them.”</p>
 </blockquote>
 <p>Now every <code>git push</code> automatically updates your live site. The agent runs 24/7 without you touching anything.</p>
 <h3 id="step-4-checkpoint">Step 4 Checkpoint</h3>
@@ -1010,6 +1007,118 @@ Add radio buttons so I can pick my favorite version of each section.</code></pre
 Update my-site/index.html with the combined version.</code></pre>
 <p>Push and redeploy if you make changes to <code>my-site/</code>.</p>
 <hr />
+<h3 id="power-up-human-in-the-loop-approval-20-min">Power Up: Human-in-the-Loop Approval (20 min)</h3>
+<p><strong>What this adds:</strong> Right now your agent sends proposals directly to visitors — no review, no safety net. This Power Up adds an approval step: the agent prepares the proposal and sends it to YOU first. You review it, approve it (or request changes), and only then does the visitor receive it.</p>
+<p><strong>Why this matters:</strong> You don’t give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same principle here. Start with approval mode, build trust in the agent’s output, and remove the guardrail later when you’re confident.</p>
+<p><strong>How it works:</strong></p>
+<pre><code>Current flow (auto-send):
+  Visitor completes intake → Agent writes proposal → Email sent → You get alert
+  (you find out AFTER the visitor already has it)
+
+Approval flow:
+  Visitor completes intake → Agent writes proposal → YOU get it first
+  → You review → Approve OR request changes → THEN visitor gets it</code></pre>
+<p><strong>Step 1: Add the approval mode env var</strong></p>
+<p>Add to your <code>.env</code> file:</p>
+<pre><code>APPROVAL_MODE=true</code></pre>
+<p>Also add it to your Vercel Environment Variables if you’ve already deployed.</p>
+<p><strong>Step 2: Build the approval system</strong></p>
+<pre><code>I want to add human-in-the-loop approval to my proposal engine.
+
+Read api/generate-proposal.js and understand the current agent flow.
+
+When APPROVAL_MODE=true in env vars, the agent should change behavior:
+
+1. RENDER the proposal PDF as usual — no change here
+
+2. INSTEAD of emailing the visitor directly, store the pending proposal
+   and send ME the proposal for review first:
+   - Send me a Telegram message with: lead summary, score, and the
+     proposal PDF attached
+   - The Telegram message should include an approval link:
+     https://[my-vercel-url]/api/approve-proposal?id=[unique-id]
+   - Also email ME (not the visitor) the proposal PDF so I can review
+     it in full. Use my email from CLAUDE.md or a new env var OWNER_EMAIL.
+
+3. CREATE a new api/approve-proposal.js endpoint that:
+   - GET request: shows a simple approval page with:
+     - The lead summary (name, company, challenge, score)
+     - &quot;Approve &amp; Send&quot; button — sends the proposal email to the visitor
+     - &quot;Request Changes&quot; text area + submit button — sends the change
+       request back to the agent to regenerate the proposal, then shows
+       the new version for approval again
+   - POST with action &quot;approve&quot;: triggers send_email to the visitor
+     with the stored PDF, then sends me a Telegram confirmation
+   - POST with action &quot;revise&quot; + instructions: runs the agent again
+     with the revision instructions, re-renders the PDF, and shows
+     the updated proposal for approval
+
+4. STORE pending proposals so the approval endpoint can access them.
+   If Supabase is configured, add a &quot;pending_proposals&quot; table.
+   If not, use a simple in-memory store (fine for low volume).
+
+5. When APPROVAL_MODE is not set or is &quot;false&quot;, keep the current
+   behavior — auto-send as before. No changes to the default flow.
+
+Update the agent system prompt so Claude knows:
+- When approval mode is on, call alert_owner with the approval link
+  instead of calling send_email to the visitor
+- The Telegram alert should say &quot;PENDING APPROVAL&quot; clearly
+- Include the approval URL in the message
+
+Add OWNER_EMAIL to .env — this is where proposal reviews get sent.
+
+Keep the existing auto-send flow as the default. Approval mode is
+opt-in via the env var.</code></pre>
+<p><strong>Step 3: Add Supabase table for pending proposals (if using Supabase)</strong></p>
+<p>If you completed the Lead Storage Power Up, add a table to store pending proposals:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> pending_proposals (</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">id</span> TEXT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  visitor_email TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  visitor_name TEXT,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  company_name TEXT,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  lead_score TEXT,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  proposal_pdf_base64 TEXT,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  email_subject TEXT,</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  email_body TEXT,</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  intake_data JSONB,</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  status TEXT <span class="kw">DEFAULT</span> <span class="st">&#39;pending&#39;</span>,</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  revision_instructions TEXT,</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  created_at TIMESTAMPTZ <span class="kw">DEFAULT</span> now()</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> pending_proposals <span class="kw">ENABLE</span> <span class="kw">ROW</span> <span class="kw">LEVEL</span> SECURITY;</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> POLICY <span class="ot">&quot;Allow anonymous access&quot;</span> <span class="kw">ON</span> pending_proposals</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">FOR</span> <span class="kw">ALL</span> <span class="kw">USING</span> (<span class="kw">true</span>) <span class="kw">WITH</span> <span class="kw">CHECK</span> (<span class="kw">true</span>);</span></code></pre></div>
+<blockquote>
+<p><strong>No Supabase?</strong> The in-memory store works fine for testing and low volume. Proposals will be lost if the server restarts, but for a bootcamp demo that’s acceptable. Add Supabase later for persistence.</p>
+</blockquote>
+<p><strong>Step 4: Test the approval flow</strong></p>
+<p>Add <code>OWNER_EMAIL=your@email.com</code> to <code>.env</code>. Restart the server.</p>
+<ol type="1">
+<li>Open http://localhost:3000</li>
+<li>Chat with the bot: “I need help with my content strategy”</li>
+<li>Complete the intake questions</li>
+<li><strong>This time, no email goes to the visitor.</strong> Instead:
+<ul>
+<li>Your Telegram buzzes with “PENDING APPROVAL” + the proposal PDF + an approval link</li>
+<li>Your email gets the proposal for review</li>
+</ul></li>
+<li>Click the approval link — you see the proposal summary and two options</li>
+<li>Click <strong>“Approve &amp; Send”</strong> — now the visitor gets the email</li>
+<li>Your Telegram confirms: “Proposal sent to [visitor email]”</li>
+</ol>
+<p><strong>To test revision:</strong> Instead of approving, type changes in the text area (e.g., “Remove the pricing section — I want to discuss that on a call”) and submit. The agent regenerates the proposal with your instructions, and you review the new version.</p>
+<p><strong>Step 5: Push and redeploy</strong></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add human-in-the-loop approval mode&quot;</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> push</span></code></pre></div>
+<p>Don’t forget to add <code>APPROVAL_MODE=true</code> and <code>OWNER_EMAIL</code> to your Vercel Environment Variables, then redeploy.</p>
+<blockquote>
+<p><strong>Going full auto later:</strong> When you trust the agent’s proposals, set <code>APPROVAL_MODE=false</code> (or remove it) in Vercel env vars and redeploy. The agent goes back to auto-send. You can toggle between modes anytime — no code changes needed.</p>
+</blockquote>
+<p><strong>Checkpoint:</strong> - [ ] <code>APPROVAL_MODE=true</code> stops auto-send to visitors - [ ] You receive the proposal via Telegram + email for review - [ ] Approval link works — click to see proposal summary - [ ] “Approve &amp; Send” delivers the email to the visitor - [ ] “Request Changes” regenerates the proposal with your feedback - [ ] Toggling <code>APPROVAL_MODE=false</code> restores auto-send</p>
+<hr />
 <h2 id="show-tell-430-455">Show &amp; Tell (4:30 – 4:55)</h2>
 <p><strong>3 minutes per person.</strong> Share your screen. Show the live URL. This is a demo, not a lecture.</p>
 <h3 id="the-format">The Format</h3>
@@ -1120,7 +1229,7 @@ Update my-site/index.html with the combined version.</code></pre>
 <li><strong>Automated follow-ups:</strong> Vercel Cron Job (free: 2/day) checks Supabase for leads &gt;48hrs with no response, auto-sends personalized follow-up</li>
 <li><strong>Calendar booking:</strong> Add a Cal.com link in proposals for high-value leads</li>
 <li><strong>Lead dashboard:</strong> Build a /admin page reading from Supabase</li>
-<li><strong>Full autonomy:</strong> Set <code>APPROVAL_MODE=false</code> once you trust the proposals</li>
+<li><strong>Full autonomy:</strong> If you set up approval mode, switch to <code>APPROVAL_MODE=false</code> once you trust the proposals</li>
 <li><strong>Custom domain:</strong> Point your own domain to the Vercel deployment</li>
 <li><strong>Multiple proposal templates:</strong> Different formats for different service lines</li>
 </ul>
@@ -1133,25 +1242,25 @@ Update my-site/index.html with the combined version.</code></pre>
 <h2 id="annexure">Annexure</h2>
 <h3 id="deploying-via-vercel-cli">Deploying via Vercel CLI</h3>
 <p>During the bootcamp we deployed via the Vercel dashboard (GitHub import). For quick iterations after the bootcamp, you can deploy directly from your terminal:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Vercel CLI (one time)</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> vercel</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy from your project directory</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy to production (after testing)</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> <span class="at">--prod</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Vercel CLI (one time)</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> vercel</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy from your project directory</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy to production (after testing)</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> <span class="at">--prod</span></span></code></pre></div>
 <p>The CLI is useful when you want to preview a change before pushing to GitHub, or when you want to set environment variables:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add environment variables (used in Steps 2-3)</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add OPENROUTER_API_KEY</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add RESEND_API_KEY</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_BOT_TOKEN</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_CHAT_ID</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If you completed the Lead Storage Power Up:</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_URL</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_KEY</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add environment variables (used in Steps 2-3)</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add OPENROUTER_API_KEY</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add RESEND_API_KEY</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_BOT_TOKEN</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_CHAT_ID</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If you completed the Lead Storage Power Up:</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_URL</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_KEY</span></code></pre></div>
 <blockquote>
 <p><strong>Tip:</strong> Dashboard deploys (via GitHub push) and CLI deploys both work. Use GitHub push for production changes, CLI for quick previews.</p>
 </blockquote>

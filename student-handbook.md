@@ -711,7 +711,7 @@ Now the moment. Ask a neighbor (or use a second device) to be your "visitor."
 
 You didn't write "step 1, step 2, step 3." You gave Claude tools and a goal. Claude figured out the steps. That's the difference between a script and an agent.
 
-> **The learning moment:** "You don't give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately. Next week, you add approval mode — the agent generates the proposal, sends it to your phone for review, and waits for your 'approve' before sending. Start autonomous, build trust, then add guardrails where you need them."
+> **The learning moment:** "You don't give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately — but if you want a safety net, the Human-in-the-Loop Power Up adds approval mode. The agent generates the proposal, sends it to your phone for review, and waits for your 'approve' before sending. Start autonomous, build trust, then add guardrails where you need them."
 
 Now every `git push` automatically updates your live site. The agent runs 24/7 without you touching anything.
 
@@ -901,6 +901,151 @@ Push and redeploy if you make changes to `my-site/`.
 
 ---
 
+### Power Up: Human-in-the-Loop Approval (20 min)
+
+**What this adds:** Right now your agent sends proposals directly to visitors — no review, no safety net. This Power Up adds an approval step: the agent prepares the proposal and sends it to YOU first. You review it, approve it (or request changes), and only then does the visitor receive it.
+
+**Why this matters:** You don't give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same principle here. Start with approval mode, build trust in the agent's output, and remove the guardrail later when you're confident.
+
+**How it works:**
+
+```
+Current flow (auto-send):
+  Visitor completes intake → Agent writes proposal → Email sent → You get alert
+  (you find out AFTER the visitor already has it)
+
+Approval flow:
+  Visitor completes intake → Agent writes proposal → YOU get it first
+  → You review → Approve OR request changes → THEN visitor gets it
+```
+
+**Step 1: Add the approval mode env var**
+
+Add to your `.env` file:
+
+```
+APPROVAL_MODE=true
+```
+
+Also add it to your Vercel Environment Variables if you've already deployed.
+
+**Step 2: Build the approval system**
+
+```
+I want to add human-in-the-loop approval to my proposal engine.
+
+Read api/generate-proposal.js and understand the current agent flow.
+
+When APPROVAL_MODE=true in env vars, the agent should change behavior:
+
+1. RENDER the proposal PDF as usual — no change here
+
+2. INSTEAD of emailing the visitor directly, store the pending proposal
+   and send ME the proposal for review first:
+   - Send me a Telegram message with: lead summary, score, and the
+     proposal PDF attached
+   - The Telegram message should include an approval link:
+     https://[my-vercel-url]/api/approve-proposal?id=[unique-id]
+   - Also email ME (not the visitor) the proposal PDF so I can review
+     it in full. Use my email from CLAUDE.md or a new env var OWNER_EMAIL.
+
+3. CREATE a new api/approve-proposal.js endpoint that:
+   - GET request: shows a simple approval page with:
+     - The lead summary (name, company, challenge, score)
+     - "Approve & Send" button — sends the proposal email to the visitor
+     - "Request Changes" text area + submit button — sends the change
+       request back to the agent to regenerate the proposal, then shows
+       the new version for approval again
+   - POST with action "approve": triggers send_email to the visitor
+     with the stored PDF, then sends me a Telegram confirmation
+   - POST with action "revise" + instructions: runs the agent again
+     with the revision instructions, re-renders the PDF, and shows
+     the updated proposal for approval
+
+4. STORE pending proposals so the approval endpoint can access them.
+   If Supabase is configured, add a "pending_proposals" table.
+   If not, use a simple in-memory store (fine for low volume).
+
+5. When APPROVAL_MODE is not set or is "false", keep the current
+   behavior — auto-send as before. No changes to the default flow.
+
+Update the agent system prompt so Claude knows:
+- When approval mode is on, call alert_owner with the approval link
+  instead of calling send_email to the visitor
+- The Telegram alert should say "PENDING APPROVAL" clearly
+- Include the approval URL in the message
+
+Add OWNER_EMAIL to .env — this is where proposal reviews get sent.
+
+Keep the existing auto-send flow as the default. Approval mode is
+opt-in via the env var.
+```
+
+**Step 3: Add Supabase table for pending proposals (if using Supabase)**
+
+If you completed the Lead Storage Power Up, add a table to store pending proposals:
+
+```sql
+CREATE TABLE pending_proposals (
+  id TEXT PRIMARY KEY,
+  visitor_email TEXT NOT NULL,
+  visitor_name TEXT,
+  company_name TEXT,
+  lead_score TEXT,
+  proposal_pdf_base64 TEXT,
+  email_subject TEXT,
+  email_body TEXT,
+  intake_data JSONB,
+  status TEXT DEFAULT 'pending',
+  revision_instructions TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE pending_proposals ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow anonymous access" ON pending_proposals
+  FOR ALL USING (true) WITH CHECK (true);
+```
+
+> **No Supabase?** The in-memory store works fine for testing and low volume. Proposals will be lost if the server restarts, but for a bootcamp demo that's acceptable. Add Supabase later for persistence.
+
+**Step 4: Test the approval flow**
+
+Add `OWNER_EMAIL=your@email.com` to `.env`. Restart the server.
+
+1. Open http://localhost:3000
+2. Chat with the bot: "I need help with my content strategy"
+3. Complete the intake questions
+4. **This time, no email goes to the visitor.** Instead:
+   - Your Telegram buzzes with "PENDING APPROVAL" + the proposal PDF + an approval link
+   - Your email gets the proposal for review
+5. Click the approval link — you see the proposal summary and two options
+6. Click **"Approve & Send"** — now the visitor gets the email
+7. Your Telegram confirms: "Proposal sent to [visitor email]"
+
+**To test revision:** Instead of approving, type changes in the text area (e.g., "Remove the pricing section — I want to discuss that on a call") and submit. The agent regenerates the proposal with your instructions, and you review the new version.
+
+**Step 5: Push and redeploy**
+
+```bash
+cd my-site
+git add -A && git commit -m "Add human-in-the-loop approval mode" && git push
+```
+
+Don't forget to add `APPROVAL_MODE=true` and `OWNER_EMAIL` to your Vercel Environment Variables, then redeploy.
+
+> **Going full auto later:** When you trust the agent's proposals, set `APPROVAL_MODE=false` (or remove it) in Vercel env vars and redeploy. The agent goes back to auto-send. You can toggle between modes anytime — no code changes needed.
+
+**Checkpoint:**
+- [ ] `APPROVAL_MODE=true` stops auto-send to visitors
+- [ ] You receive the proposal via Telegram + email for review
+- [ ] Approval link works — click to see proposal summary
+- [ ] "Approve & Send" delivers the email to the visitor
+- [ ] "Request Changes" regenerates the proposal with your feedback
+- [ ] Toggling `APPROVAL_MODE=false` restores auto-send
+
+---
+
 ## Show & Tell (4:30 – 4:55)
 
 **3 minutes per person.** Share your screen. Show the live URL. This is a demo, not a lecture.
@@ -986,7 +1131,7 @@ Things you can add after the bootcamp:
 - **Automated follow-ups:** Vercel Cron Job (free: 2/day) checks Supabase for leads >48hrs with no response, auto-sends personalized follow-up
 - **Calendar booking:** Add a Cal.com link in proposals for high-value leads
 - **Lead dashboard:** Build a /admin page reading from Supabase
-- **Full autonomy:** Set `APPROVAL_MODE=false` once you trust the proposals
+- **Full autonomy:** If you set up approval mode, switch to `APPROVAL_MODE=false` once you trust the proposals
 - **Custom domain:** Point your own domain to the Vercel deployment
 - **Multiple proposal templates:** Different formats for different service lines
 
