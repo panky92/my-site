@@ -262,11 +262,6 @@
 <td>Chatbot speaks like you. Proposals written like you. Emails sound like you.</td>
 </tr>
 <tr class="even">
-<td><strong>Lead scoring rules</strong></td>
-<td>CLAUDE.md “Lead Scoring Rules” section</td>
-<td>Lead scoring: HIGH/MEDIUM/LOW based on your services and ideal clients</td>
-</tr>
-<tr class="odd">
 <td><strong>Telegram bot token</strong></td>
 <td>From Day 1 setup</td>
 <td>Lead alerts — your phone buzzes when visitors request proposals</td>
@@ -352,8 +347,8 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 <tr class="odd">
 <td>4:00 – 4:30</td>
 <td><strong>Power Ups</strong></td>
-<td>Research polish, lead storage, second design</td>
-<td>Researcher, Supabase</td>
+<td>Lead storage, second design</td>
+<td>Supabase</td>
 </tr>
 <tr class="even">
 <td>4:30 – 4:55</td>
@@ -403,7 +398,7 @@ Tell me if anything is missing or too thin for building a website and chatbot to
 </blockquote>
 <hr />
 <h2 id="kickoff-1000-1015">Kickoff (10:00 – 10:15)</h2>
-<p>Yesterday you built a team — researcher, comms lead, and connected it all to your phone. Today you give that team a real project.</p>
+<p>Yesterday you built your CLAUDE.md — your identity, voice, services, and connected it all to your phone. Today you put it to work on a real project.</p>
 <p><strong>The brief:</strong> Build a branded website that works as your AI sales agent. A visitor finds your site, chats with an AI that sounds like you, describes what they need, and receives a personalized proposal in their inbox — all without you lifting a finger. Your phone buzzes with a lead alert. You review the proposal. You approve it. The visitor gets it. That’s what we’re shipping today.</p>
 <p>Make sure you have your <code>TELEGRAM_BOT_TOKEN</code> and <code>TELEGRAM_CHAT_ID</code> from Day 1 handy — you’ll need them in Step 3 for lead alerts.</p>
 <hr />
@@ -537,7 +532,7 @@ Open <code>my-site/index.html</code> — you’d show this to a client</li>
 <p><strong>Before you start:</strong> Your Claude session has been running for 2 hours. Type <code>/compact</code> to summarize and free up context. This keeps Claude fast and accurate for the code-heavy steps ahead.</p>
 </blockquote>
 <p><strong>What you’re building:</strong> An AI chatbot on your website that answers visitors in YOUR voice.</p>
-<p><strong>Day 1 artifacts used:</strong> CLAUDE.md (the system prompt), voice fingerprint (how it talks), “What I Offer” section (what it knows about your services)</p>
+<p><strong>Day 1 artifact used:</strong> CLAUDE.md (system prompt + voice + services)</p>
 <h3 id="a-set-up-your-api-key-5-min">2A: Set Up Your API Key (5 min)</h3>
 <p>Your chatbot needs an API key to call an LLM. We’ll use <strong>OpenRouter</strong> — it gives you access to Claude, GPT, Gemini, and other models through a single API.</p>
 <p><strong>You’ve been given a pre-loaded OpenRouter API key</strong> — check the chat or the link shared by your instructor. It has credits loaded for the bootcamp.</p>
@@ -638,7 +633,7 @@ Tested on mobile (use your local IP, e.g. <code>http://192.168.x.x:3000</code>)
 <p><strong>Back from lunch?</strong> Run <code>/compact</code> again. The proposal engine is the most complex step — Claude needs a clean context window to generate and customize the code correctly.</p>
 </blockquote>
 <p><strong>What you’re building:</strong> The chatbot gains a second mode — it gathers requirements, generates a personalized proposal PDF, emails it to the visitor, and alerts you on Telegram.</p>
-<p><strong>Day 1 artifacts used:</strong> Voice fingerprint (proposal voice), “What I Offer” (proposal scoping), Telegram bot (owner alerts)</p>
+<p><strong>Day 1 artifacts used:</strong> CLAUDE.md (voice + services + lead scoring), Telegram bot (owner alerts)</p>
 <h3 id="a-add-intake-mode-to-the-chatbot-20-min">3A: Add Intake Mode to the Chatbot (20 min)</h3>
 <pre><code>Upgrade the chatbot in api/chat.js to support two modes:
 
@@ -1020,7 +1015,7 @@ Update my-site/index.html with the combined version.</code></pre>
 <h3 id="the-format">The Format</h3>
 <p><strong>1. Who I am (15 sec)</strong> — Name, role, one line.</p>
 <p><strong>2. What I built — show the live URL (1 min)</strong> — Pull up your Vercel URL. Walk through the site. Click the chat widget. If the agent pipeline works, trigger it — show the proposal PDF arriving, your phone buzzing.</p>
-<p><strong>3. The compound — how Day 1 fed Day 2 (45 sec)</strong> — Pick ONE example: voice fingerprint → chatbot voice, CLAUDE.md → site copy, lead scoring rules → proposal engine.</p>
+<p><strong>3. The compound — how Day 1 fed Day 2 (45 sec)</strong> — Pick ONE example: CLAUDE.md voice section → chatbot speaks like you, “What I Offer” → site copy, lead scoring rules → proposal engine.</p>
 <p><strong>4. Where I got stuck (30 sec)</strong> — What broke? What fixed it?</p>
 <p><strong>5. What I’m doing Monday (15 sec)</strong> — One specific thing. “I’m sending this URL to 3 prospects” or “I’m running /brief every morning.”</p>
 <blockquote>
@@ -1044,49 +1039,34 @@ Update my-site/index.html with the combined version.</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>CLAUDE.md</td>
+<td>CLAUDE.md (identity)</td>
 <td>→</td>
-<td>Chatbot system prompt — answers like you</td>
+<td>Website copy — specific to your services and clients</td>
 </tr>
 <tr class="even">
-<td>Voice fingerprint</td>
+<td>CLAUDE.md (voice)</td>
 <td>→</td>
-<td>Proposals and emails written in your voice</td>
+<td>Chatbot, proposals, and emails all sound like you</td>
 </tr>
 <tr class="odd">
-<td>Researcher team</td>
-<td>→</td>
-<td>Competitive positioning on your site</td>
-</tr>
-<tr class="even">
-<td>Lead scoring rules</td>
+<td>CLAUDE.md (lead scoring)</td>
 <td>→</td>
 <td>Claude scores leads using YOUR rules (no regex — real reasoning)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Telegram bot</td>
 <td>→</td>
 <td>Owner alerts — phone buzzes with lead summary + proposal PDF</td>
-</tr>
-<tr class="even">
-<td>Voice fingerprint</td>
-<td>→</td>
-<td>Website copy, chatbot, and proposals all sound like you</td>
 </tr>
 </tbody>
 </table>
 <p>Without Day 1, today would have produced a generic website with a chatbox.</p>
 <p>With Day 1, today produced a <strong>personal sales agent that speaks in your voice, qualifies leads, writes proposals, renders branded PDFs, emails them, and alerts you on your phone — running 24/7 on the internet.</strong></p>
 <h3 id="your-deliverables">Your Deliverables</h3>
-<p><strong>Core (everyone):</strong> - [ ] <strong>Published website</strong> — live URL on Vercel - [ ] <strong>AI chatbot</strong> — answers in your voice, knows your services - [ ] <strong>AI agent</strong> — Claude with tools, orchestrating autonomously - [ ] <strong>Branded proposal PDFs</strong> — generated per visitor using pdf-lib - [ ] <strong>Email automation</strong> — proposals emailed with PDF attachments - [ ] <strong>Lead scoring</strong> — Claude applies your triage rules (in Telegram alerts) - [ ] <strong>Owner alerts</strong> — Telegram notifications with proposal PDF attached - [ ] <strong>Logo</strong> — SVG logo integrated into site header - [ ] <strong>Research polish</strong> — competitive differentiation sharpened by Day 1 research</p>
-<p><strong>Power Ups (if completed):</strong> - [ ] <strong>Expert roast</strong> — panel critique + fixes applied - [ ] <strong>CRM storage</strong> — leads stored in Supabase with scores - [ ] <strong>Second design</strong> — compared and combined best elements</p>
+<p><strong>Core (everyone):</strong> - [ ] <strong>Published website</strong> — live URL on Vercel - [ ] <strong>AI chatbot</strong> — answers in your voice, knows your services - [ ] <strong>AI agent</strong> — Claude with tools, orchestrating autonomously - [ ] <strong>Branded proposal PDFs</strong> — generated per visitor using pdf-lib - [ ] <strong>Email automation</strong> — proposals emailed with PDF attachments - [ ] <strong>Lead scoring</strong> — Claude applies your triage rules (in Telegram alerts) - [ ] <strong>Owner alerts</strong> — Telegram notifications with proposal PDF attached - [ ] <strong>Logo</strong> — SVG logo integrated into site header</p>
+<p><strong>Power Ups (if completed):</strong> - [ ] <strong>CRM storage</strong> — leads stored in Supabase with scores - [ ] <strong>Second design</strong> — compared and combined best elements</p>
 <h3 id="key-deliverables-achieved">Key Deliverables Achieved</h3>
 <table>
-<colgroup>
-<col style="width: 3%" />
-<col style="width: 37%" />
-<col style="width: 59%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>#</th>
@@ -1097,56 +1077,42 @@ Update my-site/index.html with the combined version.</code></pre>
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>Competitive research &amp; analysis</td>
-<td>Day 1 Step 3 + website positioning</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Data analysis &amp; Report generation</td>
-<td>Day 1 Step 5 + lead scoring</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>RFP / Contracts / Artifacts</td>
-<td>Proposal PDFs — personalized per client</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Email Triage</td>
-<td>Day 1 Chief of Staff + Day 2 lead alerts</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>Published agent</td>
-<td>Chatbot + proposal engine + alerts</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>Content creation</td>
-<td>Website copy + proposals + emails — all in your voice</td>
-</tr>
-<tr class="odd">
-<td>7</td>
 <td>Published website</td>
 <td>Live URL on Vercel</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td>Creating Amazing decks</td>
+<td>2</td>
+<td>Content creation</td>
+<td>Website copy + proposals + emails — all in your voice</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Published agent</td>
+<td>Chatbot + proposal engine + alerts</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>RFP / Contracts / Artifacts</td>
+<td>Proposal PDFs — personalized per client</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Report generation</td>
 <td>Branded proposal PDFs — different for every client</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Lead scoring &amp; alerts</td>
+<td>Claude scores leads, Telegram alerts your phone</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="the-monday-morning-habit">The Monday Morning Habit</h2>
-<p>You now have two systems that work every day:</p>
-<p><strong>Morning (Day 1 system):</strong></p>
-<pre><code>/brief</code></pre>
-<p>Your Chief of Staff reads your email, applies your triage rules, and delivers a morning briefing to your phone.</p>
-<p><strong>All day (Day 2 system):</strong> Your website is live. Visitors arrive. The chatbot engages them. When someone’s serious, it gathers their requirements and generates a personalized proposal. Your phone buzzes. You review. You approve. The proposal lands in their inbox. You didn’t open a laptop.</p>
+<p>Your website is live. Your agent is running 24/7.</p>
+<p>Visitors arrive. The chatbot engages them in your voice. When someone’s serious, it gathers their requirements and generates a personalized proposal — branded PDF, emailed to them, lead score on your phone. You didn’t open a laptop.</p>
 <p><strong>The loop:</strong></p>
-<pre><code>Day 1 system: Email comes IN → Claude triages it for you
-Day 2 system: Email goes OUT → Claude sells for you</code></pre>
+<pre><code>Visitor lands on your site → chatbot qualifies them → agent writes proposal → PDF in their inbox → alert on your phone</code></pre>
 <hr />
 <h2 id="take-home-stretch-goals">Take-Home Stretch Goals</h2>
 <p>Things you can add after the bootcamp:</p>
@@ -1167,25 +1133,25 @@ Day 2 system: Email goes OUT → Claude sells for you</code></pre>
 <h2 id="annexure">Annexure</h2>
 <h3 id="deploying-via-vercel-cli">Deploying via Vercel CLI</h3>
 <p>During the bootcamp we deployed via the Vercel dashboard (GitHub import). For quick iterations after the bootcamp, you can deploy directly from your terminal:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Vercel CLI (one time)</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> vercel</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy from your project directory</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy to production (after testing)</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> <span class="at">--prod</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Vercel CLI (one time)</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-g</span> vercel</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy from your project directory</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-site</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy to production (after testing)</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> <span class="at">--prod</span></span></code></pre></div>
 <p>The CLI is useful when you want to preview a change before pushing to GitHub, or when you want to set environment variables:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add environment variables (used in Steps 2-3)</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add OPENROUTER_API_KEY</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add RESEND_API_KEY</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_BOT_TOKEN</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_CHAT_ID</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If you completed the Lead Storage Power Up:</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_URL</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_KEY</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add environment variables (used in Steps 2-3)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add OPENROUTER_API_KEY</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add RESEND_API_KEY</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_BOT_TOKEN</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add TELEGRAM_CHAT_ID</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If you completed the Lead Storage Power Up:</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_URL</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vercel</span> env add SUPABASE_KEY</span></code></pre></div>
 <blockquote>
 <p><strong>Tip:</strong> Dashboard deploys (via GitHub push) and CLI deploys both work. Use GitHub push for production changes, CLI for quick previews.</p>
 </blockquote>
