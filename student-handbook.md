@@ -29,7 +29,6 @@ Today's build runs on everything you built yesterday. Here's a quick check:
 | **CLAUDE.md**                   | Root of your project                        | Chatbot system prompt — answers visitors using your context                                |
 | **"What I Offer" section**      | Inside CLAUDE.md                            | Chatbot explains your services. Proposals scope recommendations.                           |
 | **Voice fingerprint**           | CLAUDE.md "My Writing Voice" section        | Chatbot speaks like you. Proposals written like you. Emails sound like you.                |
-| **Lead scoring rules**          | CLAUDE.md "Lead Scoring Rules" section      | Lead scoring: HIGH/MEDIUM/LOW based on your services and ideal clients                     |
 | **Telegram bot token**          | From Day 1 setup                            | Lead alerts — your phone buzzes when visitors request proposals                            |
 
 ### Quick verification (5 min)
@@ -62,7 +61,7 @@ If something's missing, spend 5 minutes enriching it now. It's easier to add con
 | 1:45 – 2:40   | **Step 3: Proposal Engine**   | Agentic tool use → PDF → email → lead alert → test locally            | Lead scoring rules, Telegram bot (alerts)            |
 | 2:40 – 2:50   | _Break_                       |                                                                       |                                                      |
 | 2:50 – 4:00   | **Step 4: Deploy & Demo**     | Push to GitHub → deploy to Vercel → add env vars → debug → live demo  | Everything                                           |
-| 4:00 – 4:30   | **Power Ups**                 | Research polish, lead storage, second design                          | Researcher, Supabase                                 |
+| 4:00 – 4:30   | **Power Ups**                 | Lead storage, second design                                           | Supabase                                             |
 | 4:30 – 4:55   | **Show & Tell**               | Live demos, live URLs, war stories                                    | Everything                                           |
 | 4:55 – 5:00   | **Close**                     | What you built. Monday habit.                                         |                                                      |
 
@@ -127,7 +126,7 @@ claude
 
 ## Kickoff (10:00 – 10:15)
 
-Yesterday you built a team — researcher, comms lead, and connected it all to your phone. Today you give that team a real project.
+Yesterday you built your CLAUDE.md — your identity, voice, services, and connected it all to your phone. Today you put it to work on a real project.
 
 **The brief:** Build a branded website that works as your AI sales agent. A visitor finds your site, chats with an AI that sounds like you, describes what they need, and receives a personalized proposal in their inbox — all without you lifting a finger. Your phone buzzes with a lead alert. You review the proposal. You approve it. The visitor gets it. That's what we're shipping today.
 
@@ -304,7 +303,7 @@ _Break — 10 min_
 
 **What you're building:** An AI chatbot on your website that answers visitors in YOUR voice.
 
-**Day 1 artifacts used:** CLAUDE.md (the system prompt), voice fingerprint (how it talks), "What I Offer" section (what it knows about your services)
+**Day 1 artifact used:** CLAUDE.md (system prompt + voice + services)
 
 ### 2A: Set Up Your API Key (5 min)
 
@@ -427,7 +426,7 @@ _Lunch — 40 min_
 
 **What you're building:** The chatbot gains a second mode — it gathers requirements, generates a personalized proposal PDF, emails it to the visitor, and alerts you on Telegram.
 
-**Day 1 artifacts used:** Voice fingerprint (proposal voice), "What I Offer" (proposal scoping), Telegram bot (owner alerts)
+**Day 1 artifacts used:** CLAUDE.md (voice + services + lead scoring), Telegram bot (owner alerts)
 
 ### 3A: Add Intake Mode to the Chatbot (20 min)
 
@@ -912,7 +911,7 @@ Push and redeploy if you make changes to `my-site/`.
 
 **2. What I built — show the live URL (1 min)** — Pull up your Vercel URL. Walk through the site. Click the chat widget. If the agent pipeline works, trigger it — show the proposal PDF arriving, your phone buzzing.
 
-**3. The compound — how Day 1 fed Day 2 (45 sec)** — Pick ONE example: voice fingerprint → chatbot voice, CLAUDE.md → site copy, lead scoring rules → proposal engine.
+**3. The compound — how Day 1 fed Day 2 (45 sec)** — Pick ONE example: CLAUDE.md voice section → chatbot speaks like you, "What I Offer" → site copy, lead scoring rules → proposal engine.
 
 **4. Where I got stuck (30 sec)** — What broke? What fixed it?
 
@@ -928,12 +927,10 @@ Push and redeploy if you make changes to `my-site/`.
 
 | Day 1                       | →   | Day 2                                                            |
 | --------------------------- | --- | ---------------------------------------------------------------- |
-| CLAUDE.md                   | →   | Chatbot system prompt — answers like you                         |
-| Voice fingerprint           | →   | Proposals and emails written in your voice                       |
-| Researcher team             | →   | Competitive positioning on your site                             |
-| Lead scoring rules          | →   | Claude scores leads using YOUR rules (no regex — real reasoning) |
+| CLAUDE.md (identity)        | →   | Website copy — specific to your services and clients             |
+| CLAUDE.md (voice)           | →   | Chatbot, proposals, and emails all sound like you                |
+| CLAUDE.md (lead scoring)    | →   | Claude scores leads using YOUR rules (no regex — real reasoning) |
 | Telegram bot                | →   | Owner alerts — phone buzzes with lead summary + proposal PDF     |
-| Voice fingerprint           | →   | Website copy, chatbot, and proposals all sound like you          |
 
 Without Day 1, today would have produced a generic website with a chatbox.
 
@@ -950,10 +947,8 @@ With Day 1, today produced a **personal sales agent that speaks in your voice, q
 - [ ] **Lead scoring** — Claude applies your triage rules (in Telegram alerts)
 - [ ] **Owner alerts** — Telegram notifications with proposal PDF attached
 - [ ] **Logo** — SVG logo integrated into site header
-- [ ] **Research polish** — competitive differentiation sharpened by Day 1 research
 
 **Power Ups (if completed):**
-- [ ] **Expert roast** — panel critique + fixes applied
 - [ ] **CRM storage** — leads stored in Supabase with scores
 - [ ] **Second design** — compared and combined best elements
 
@@ -961,37 +956,25 @@ With Day 1, today produced a **personal sales agent that speaks in your voice, q
 
 | #   | Deliverable                       | Where                                                 |
 | --- | --------------------------------- | ----------------------------------------------------- |
-| 1   | Competitive research & analysis   | Day 1 Step 3 + website positioning                    |
-| 2   | Data analysis & Report generation | Day 1 Step 5 + lead scoring                           |
-| 3   | RFP / Contracts / Artifacts       | Proposal PDFs — personalized per client               |
-| 4   | Email Triage                      | Day 1 Chief of Staff + Day 2 lead alerts              |
-| 5   | Published agent                   | Chatbot + proposal engine + alerts                    |
-| 6   | Content creation                  | Website copy + proposals + emails — all in your voice |
-| 7   | Published website                 | Live URL on Vercel                                    |
-| 8   | Creating Amazing decks            | Branded proposal PDFs — different for every client    |
+| 1   | Published website                 | Live URL on Vercel                                    |
+| 2   | Content creation                  | Website copy + proposals + emails — all in your voice |
+| 3   | Published agent                   | Chatbot + proposal engine + alerts                    |
+| 4   | RFP / Contracts / Artifacts       | Proposal PDFs — personalized per client               |
+| 5   | Report generation                 | Branded proposal PDFs — different for every client    |
+| 6   | Lead scoring & alerts             | Claude scores leads, Telegram alerts your phone       |
 
 ---
 
 ## The Monday Morning Habit
 
-You now have two systems that work every day:
+Your website is live. Your agent is running 24/7.
 
-**Morning (Day 1 system):**
-
-```
-/brief
-```
-
-Your Chief of Staff reads your email, applies your triage rules, and delivers a morning briefing to your phone.
-
-**All day (Day 2 system):**
-Your website is live. Visitors arrive. The chatbot engages them. When someone's serious, it gathers their requirements and generates a personalized proposal. Your phone buzzes. You review. You approve. The proposal lands in their inbox. You didn't open a laptop.
+Visitors arrive. The chatbot engages them in your voice. When someone's serious, it gathers their requirements and generates a personalized proposal — branded PDF, emailed to them, lead score on your phone. You didn't open a laptop.
 
 **The loop:**
 
 ```
-Day 1 system: Email comes IN → Claude triages it for you
-Day 2 system: Email goes OUT → Claude sells for you
+Visitor lands on your site → chatbot qualifies them → agent writes proposal → PDF in their inbox → alert on your phone
 ```
 
 ---
