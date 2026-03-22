@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pankaj Goel — Enterprise Sales Advisor</title>
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Georgia', serif;
+      color: #1a1a1a;
+      background: #fafaf8;
+      line-height: 1.7;
+    }
+
+    /* ── Tokens ────────────────────────────────────────────────────────────── */
+    :root {
+      --ink:      #1a1a1a;
+      --mid:      #4a4a4a;
+      --muted:    #888;
+      --rule:     #e0ddd8;
+      --bg:       #fafaf8;
+      --surface:  #ffffff;
+      --accent:   #1a3a5c;
+      --accent2:  #c8833a;
+      --radius:   6px;
+    }
+
+    /* ── Layout ────────────────────────────────────────────────────────────── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Navigation ────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 1.25rem 0;
+      position: sticky; top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    nav .inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 860px; margin: 0 auto; padding: 0 2rem;
+    }
+    nav .logo {
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--accent); text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { text-decoration: none; color: var(--mid); font-size: 0.875rem; font-family: 'Arial', sans-serif; }
+    nav a:hover { color: var(--ink); }
+
+    /* ── Hero ──────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 6rem 0 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.2; font-weight: 400;
+      color: var(--ink); max-width: 680px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.05rem; color: var(--mid);
+      max-width: 560px; margin-bottom: 2.5rem;
+    }
+    .hero-stats {
+      display: flex; gap: 3rem; flex-wrap: wrap;
+      border-top: 1px solid var(--rule); padding-top: 2rem; margin-top: 2rem;
+    }
+    .stat-item { }
+    .stat-number {
+      font-size: 2rem; font-weight: 700; color: var(--accent);
+      display: block; line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem;
+    }
+
+    /* ── Sections ──────────────────────────────────────────────────────────── */
+    section { padding: 4.5rem 0; border-bottom: 1px solid var(--rule); }
+    .section-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 1rem;
+    }
+    h2 { font-size: 1.75rem; font-weight: 400; margin-bottom: 1.25rem; }
+    p { color: var(--mid); margin-bottom: 1rem; }
+
+    /* ── Services grid ─────────────────────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .service-card .icon {
+      font-size: 1.5rem; margin-bottom: 1rem; display: block;
+    }
+    .service-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.875rem; color: var(--mid); margin: 0; }
+
+    /* ── Logos ─────────────────────────────────────────────────────────────── */
+    .logos-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;
+      align-items: center;
+    }
+    .logo-badge {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 0.5rem 1.1rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem; color: var(--mid);
+    }
+
+    /* ── CTA ───────────────────────────────────────────────────────────────── */
+    .cta-bar {
+      background: var(--accent);
+      color: #fff; padding: 3.5rem 0;
+      border-bottom: none;
+    }
+    .cta-bar h2 { color: #fff; margin-bottom: 0.75rem; }
+    .cta-bar p { color: rgba(255,255,255,0.75); margin-bottom: 0; }
+    .cta-hint {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem; color: rgba(255,255,255,0.6);
+      margin-top: 1rem;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────────────────── */
+    footer {
+      padding: 2rem 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem; color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       CHAT WIDGET
+    ══════════════════════════════════════════════════════════════════════════ */
+
+    /* ── Bubble ─────────────────────────────────────────────────────────────── */
+    #chat-bubble {
+      position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 1000;
+      width: 56px; height: 56px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    #chat-bubble:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    }
+    #chat-bubble svg { width: 26px; height: 26px; fill: #fff; }
+    #chat-bubble .bubble-close { display: none; font-size: 1.25rem; color: #fff; }
+    #chat-bubble.open .bubble-open { display: none; }
+    #chat-bubble.open .bubble-close { display: block; }
+
+    /* ── Panel ──────────────────────────────────────────────────────────────── */
+    #chat-panel {
+      position: fixed; bottom: 5.5rem; right: 1.75rem; z-index: 999;
+      width: 360px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    #chat-panel.visible {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .chat-header {
+      background: var(--accent);
+      padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .chat-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .chat-header-text { flex: 1; }
+    .chat-header-name {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.875rem; font-weight: 700; color: #fff;
+    }
+    .chat-status-line {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem; color: rgba(255,255,255,0.7);
+      margin-top: 0.1rem;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; margin-right: 0.3rem;
+      vertical-align: middle;
+    }
+
+    /* Mode badge */
+    .mode-badge {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem; border-radius: 999px;
+      background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);
+      transition: background 0.3s;
+    }
+    .mode-badge.intake { background: var(--accent2); color: #fff; }
+
+    /* ── Messages ───────────────────────────────────────────────────────────── */
+    #chat-messages {
+      flex: 1; overflow-y: auto;
+      padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      max-height: 340px;
+      scroll-behavior: smooth;
+    }
+    .msg {
+      max-width: 85%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 10px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .msg.bot {
+      background: #f0f0ec;
+      color: var(--ink);
+      align-self: flex-start;
+      border-bottom-left-radius: 3px;
+    }
+    .msg.user {
+      background: var(--accent);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 3px;
+    }
+    .msg.system-msg {
+      background: #fef3e2;
+      color: #92530a;
+      border: 1px solid #fde0a8;
+      align-self: center;
+      text-align: center;
+      font-size: 0.8rem;
+      max-width: 95%;
+    }
+
+    /* Typing indicator */
+    .typing-dots {
+      display: flex; gap: 4px; align-items: center;
+      padding: 0.65rem 0.9rem;
+      background: #f0f0ec;
+      border-radius: 10px; border-bottom-left-radius: 3px;
+      align-self: flex-start;
+    }
+    .typing-dots span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--muted);
+      animation: bounce 1.2s infinite ease-in-out;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+
+    /* ── Input area ─────────────────────────────────────────────────────────── */
+    .chat-input-area {
+      border-top: 1px solid var(--rule);
+      padding: 0.875rem 1rem;
+      display: flex; gap: 0.5rem; align-items: flex-end;
+      background: var(--surface);
+    }
+    #chat-input {
+      flex: 1; resize: none;
+      border: 1px solid var(--rule); border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      font-family: 'Arial', sans-serif; font-size: 0.875rem;
+      color: var(--ink); background: var(--bg);
+      outline: none; max-height: 100px;
+      transition: border-color 0.15s;
+      line-height: 1.4;
+    }
+    #chat-input:focus { border-color: var(--accent); }
+    #chat-input::placeholder { color: var(--muted); }
+    #chat-send {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 8px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.2s;
+    }
+    #chat-send:disabled { opacity: 0.45; cursor: not-allowed; }
+    #chat-send svg { width: 16px; height: 16px; fill: #fff; }
+
+    /* Proposal generating state */
+    .proposal-banner {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem; color: #166534;
+      text-align: center;
+      margin: 0 1rem 0.75rem;
+    }
+    .proposal-banner a { color: #166534; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────────────────── -->
+  <nav>
+    <div class="inner">
+      <a class="logo" href="#">Pankaj Goel</a>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#track-record">Track Record</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Senior Sales Director &middot; IT Services &middot; UK</p>
+      <h1>Opening doors that <em>others can't</em> — at CIO level, across enterprise accounts</h1>
+      <p class="hero-sub">
+        25 years driving new business in IT services. 15 net-new logos opened. Specialist in Agentic AI transformation, go-to-market strategy, and landing enterprise deals in retail, consumer, and marketplace.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">25</span>
+          <span class="stat-label">Years in IT services sales</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">15</span>
+          <span class="stat-label">Net-new enterprise logos opened</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">CIO</span>
+          <span class="stat-label">Level relationships &amp; credibility</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ───────────────────────────────────────────────────────── -->
+  <section id="services">
+    <div class="container">
+      <p class="section-label">What I do</p>
+      <h2>Three things I'm built for</h2>
+      <p>Not pipeline management. Not account admin. New revenue — from scratch, at scale.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="icon">🔑</span>
+          <h3>New Logo Opening</h3>
+          <p>I get the first meeting where others can't. 15 net-new enterprise logos opened — Richemont, Compass Group, Barry Callebaut, Network Rail.</p>
+        </div>
+        <div class="service-card">
+          <span class="icon">⚡</span>
+          <h3>Agentic AI Transformation</h3>
+          <p>Shaping and selling end-to-end AI transformation programmes at C-suite level. Translating capability into business outcomes that land with CIOs and CFOs.</p>
+        </div>
+        <div class="service-card">
+          <span class="icon">🎯</span>
+          <h3>Go-to-Market Advisory</h3>
+          <p>Pursuit strategy, account plans, commercial positioning — the full approach that closes complex enterprise deals across long sales cycles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Track record ───────────────────────────────────────────────────── -->
+  <section id="track-record">
+    <div class="container">
+      <p class="section-label">Track record</p>
+      <h2>Enterprise logos opened across 25 years</h2>
+      <p>These aren't accounts inherited. They were cold doors, opened at senior level, from scratch.</p>
+      <div class="logos-row">
+        <span class="logo-badge">Richemont</span>
+        <span class="logo-badge">Compass Group</span>
+        <span class="logo-badge">Barry Callebaut</span>
+        <span class="logo-badge">Network Rail</span>
+        <span class="logo-badge">+11 more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────── -->
+  <section id="contact" class="cta-bar">
+    <div class="container">
+      <h2>Have a challenge worth solving?</h2>
+      <p>Click the chat widget — describe what you're working on, and I'll come back with a proposal tailored to your situation.</p>
+      <p class="cta-hint">No forms. No waiting rooms. A real conversation, and a proposal in your inbox.</p>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <p>Pankaj Goel &middot; Senior Sales Director &middot; UK &middot; IT Services</p>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       CHAT WIDGET
+  ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Bubble -->
+  <button id="chat-bubble" aria-label="Open chat">
+    <svg class="bubble-open" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    <span class="bubble-close">✕</span>
+  </button>
+
+  <!-- Panel -->
+  <div id="chat-panel" role="dialog" aria-label="Chat with Pankaj's AI assistant">
+
+    <div class="chat-header">
+      <div class="chat-avatar">🤝</div>
+      <div class="chat-header-text">
+        <div class="chat-header-name">Pankaj's Assistant</div>
+        <div class="chat-status-line">
+          <span class="status-dot"></span>Online
+        </div>
+      </div>
+      <span id="mode-badge" class="mode-badge">Q&amp;A</span>
+    </div>
+
+    <div id="chat-messages"></div>
+
+    <div id="proposal-banner" class="proposal-banner" style="display:none">
+      Generating your personalised proposal...
+    </div>
+
+    <div class="chat-input-area">
+      <textarea
+        id="chat-input"
+        rows="1"
+        placeholder="Ask something, or describe what you need..."
+        aria-label="Message input"
+      ></textarea>
+      <button id="chat-send" disabled aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+
+  </div><!-- /chat-panel -->
+
+
+  <script>
+  (() => {
+    // ── State ──────────────────────────────────────────────────────────────
+    let isOpen    = false;
+    let isLoading = false;
+    let mode      = 'qa';        // 'qa' | 'intake'
+    let messages  = [];          // full conversation history for the API
+    let intakeDone = false;
+
+    // ── DOM refs ───────────────────────────────────────────────────────────
+    const bubble    = document.getElementById('chat-bubble');
+    const panel     = document.getElementById('chat-panel');
+    const msgList   = document.getElementById('chat-messages');
+    const input     = document.getElementById('chat-input');
+    const sendBtn   = document.getElementById('chat-send');
+    const modeBadge = document.getElementById('mode-badge');
+    const propBanner= document.getElementById('proposal-banner');
+
+    // ── Open / close ───────────────────────────────────────────────────────
+    bubble.addEventListener('click', () => {
+      isOpen = !isOpen;
+      bubble.classList.toggle('open', isOpen);
+
+      if (isOpen) {
+        // Trigger reflow so transition plays
+        panel.style.display = 'flex';
+        requestAnimationFrame(() => panel.classList.add('visible'));
+        if (messages.length === 0) showWelcome();
+        setTimeout(() => input.focus(), 250);
+      } else {
+        panel.classList.remove('visible');
+        setTimeout(() => { panel.style.display = 'none'; }, 200);
+      }
+    });
+
+    // ── Welcome message ────────────────────────────────────────────────────
+    function showWelcome() {
+      appendMsg('bot',
+        "Hi — I'm here to answer any questions about Pankaj's work and services. " +
+        "Or if you have something specific you need help with, tell me what you're working on."
+      );
+    }
+
+    // ── Append a message bubble ────────────────────────────────────────────
+    function appendMsg(role, text) {
+      const div = document.createElement('div');
+      div.className = 'msg ' + role;
+      div.textContent = text;
+      msgList.appendChild(div);
+      scrollToBottom();
+      return div;
+    }
+
+    // ── Typing indicator ───────────────────────────────────────────────────
+    let typingEl = null;
+    function showTyping() {
+      typingEl = document.createElement('div');
+      typingEl.className = 'typing-dots';
+      typingEl.innerHTML = '<span></span><span></span><span></span>';
+      msgList.appendChild(typingEl);
+      scrollToBottom();
+    }
+    function hideTyping() {
+      if (typingEl) { typingEl.remove(); typingEl = null; }
+    }
+
+    // ── Scroll ─────────────────────────────────────────────────────────────
+    function scrollToBottom() {
+      msgList.scrollTop = msgList.scrollHeight;
+    }
+
+    // ── Update mode badge ──────────────────────────────────────────────────
+    function setMode(newMode) {
+      mode = newMode;
+      modeBadge.textContent = newMode === 'intake' ? 'Intake' : 'Q&A';
+      modeBadge.classList.toggle('intake', newMode === 'intake');
+    }
+
+    // ── Input helpers ──────────────────────────────────────────────────────
+    input.addEventListener('input', () => {
+      sendBtn.disabled = input.value.trim() === '' || isLoading;
+      // Auto-grow
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (!sendBtn.disabled) sendMessage();
+      }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    // ── Send message ───────────────────────────────────────────────────────
+    async function sendMessage() {
+      const text = input.value.trim();
+      if (!text || isLoading || intakeDone) return;
+
+      // Add to UI and history
+      appendMsg('user', text);
+      messages.push({ role: 'user', content: text });
+
+      // Reset input
+      input.value = '';
+      input.style.height = 'auto';
+      sendBtn.disabled = true;
+      isLoading = true;
+
+      showTyping();
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages }),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const data = await res.json();
+        hideTyping();
+
+        // Add bot reply to history and UI
+        messages.push({ role: 'assistant', content: data.reply });
+        appendMsg('bot', data.reply);
+
+        // Detect mode switch — heuristic: if bot asks about company/challenge, we're in intake
+        if (mode === 'qa' && looksLikeIntake(data.reply)) {
+          setMode('intake');
+        }
+
+        // Intake complete
+        if (data.intakeComplete && data.intakeData) {
+          intakeDone = true;
+          setMode('intake');
+          await triggerProposal(data.intakeData);
+        }
+
+      } catch (err) {
+        hideTyping();
+        appendMsg('bot', 'Something went wrong on my end — please try again in a moment.');
+        console.error('Chat error:', err);
+      } finally {
+        isLoading = false;
+        if (!intakeDone) {
+          sendBtn.disabled = input.value.trim() === '';
+          input.focus();
+        }
+      }
+    }
+
+    // ── Detect intake mode from bot reply ─────────────────────────────────
+    // Simple heuristic — doesn't need to be perfect, it's just for the badge
+    function looksLikeIntake(reply) {
+      const lower = reply.toLowerCase();
+      return (
+        lower.includes("what does your company") ||
+        lower.includes("what's the challenge") ||
+        lower.includes("what have you tried") ||
+        lower.includes("what would success") ||
+        lower.includes("budget") ||
+        lower.includes("email") && lower.includes("proposal")
+      );
+    }
+
+    // ── Trigger proposal generation ────────────────────────────────────────
+    async function triggerProposal(intakeData) {
+      // Disable input — conversation is complete
+      input.disabled = true;
+      input.placeholder = 'Intake complete — proposal is being prepared...';
+      sendBtn.disabled = true;
+
+      propBanner.style.display = 'block';
+      propBanner.textContent = 'Generating your personalised proposal...';
+
+      try {
+        const res = await fetch('/api/generate-proposal', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            conversation: messages,
+            intakeData,
+          }),
+        });
+
+        if (!res.ok) throw new Error(`Proposal API HTTP ${res.status}`);
+
+        propBanner.textContent = '✓ Proposal sent — check your inbox.';
+        propBanner.style.background = '#f0fdf4';
+        propBanner.style.color = '#166534';
+        propBanner.style.borderColor = '#bbf7d0';
+
+      } catch (err) {
+        console.error('Proposal error:', err);
+        propBanner.textContent = 'Proposal is being prepared — you\'ll receive it shortly.';
+        propBanner.style.background = '#fef3e2';
+        propBanner.style.color = '#92530a';
+        propBanner.style.borderColor = '#fde0a8';
+      }
+    }
+
+  })();
+  </script>
+
+</body>
+</html>
