@@ -711,7 +711,7 @@ Now the moment. Ask a neighbor (or use a second device) to be your "visitor."
 
 You didn't write "step 1, step 2, step 3." You gave Claude tools and a goal. Claude figured out the steps. That's the difference between a script and an agent.
 
-> **The teaching moment:** "You don't give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately. Next week, you add approval mode — the agent generates the proposal, sends it to your phone for review, and waits for your 'approve' before sending. Start autonomous, build trust, then add guardrails where you need them."
+> **The learning moment:** "You don't give an intern full send authority on day one. You review their work, give feedback, and gradually let them operate independently. Same with AI agents. Today it sends immediately. Next week, you add approval mode — the agent generates the proposal, sends it to your phone for review, and waits for your 'approve' before sending. Start autonomous, build trust, then add guardrails where you need them."
 
 Now every `git push` automatically updates your live site. The agent runs 24/7 without you touching anything.
 
