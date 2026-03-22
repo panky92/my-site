@@ -1,7 +1,5 @@
 # Day 2: Your Team's First Project — Ship Your AI Sales Engine
 
-> **Which handbook is this?** This is the **Core + Add-on** version — 4 core steps with a lighter mandatory scope, then a Power Ups menu of optional enhancements. Token-friendly — works well on the **Pro plan**. Great if you want to go at your own pace, get each step right, and explore extras only if time and tokens allow. If you're on the Max plan and want the full experience with everything mandatory, use **student-handbook-full.md** instead.
-
 **Duration:** Full day (10:00 AM – 5:00 PM) | **Four core steps, one live URL with an AI agent by 4:00 PM — then power it up**
 
 ---
@@ -111,13 +109,10 @@ git clone https://github.com/thecrux-ai/cohort-2-day-2
 cd cohort-2-day-2
 ```
 
-Copy your Day 1 artifacts into this folder — everything your team built yesterday:
+Copy your CLAUDE.md from Day 1 — it's the foundation for everything today:
 
 ```bash
-cp -r ~/thecrux-bootcamp/cohort-2-day-1/CLAUDE.md .
-cp -r ~/thecrux-bootcamp/cohort-2-day-1/.claude .
-cp -r ~/thecrux-bootcamp/cohort-2-day-1/research .
-cp -r ~/thecrux-bootcamp/cohort-2-day-1/evaluation .
+cp ~/thecrux-bootcamp/cohort-2-day-1/CLAUDE.md .
 ```
 
 Start Claude:
@@ -144,7 +139,7 @@ Make sure you have your `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` from Day 1 h
 
 **What you're building:** Your branded website — professional, polished, ready to deploy.
 
-**Day 1 artifacts used:** CLAUDE.md (identity + offerings), voice fingerprint (copy tone), research output (competitive positioning)
+**Day 1 artifact used:** CLAUDE.md (identity + offerings + voice)
 
 ### 1A: The Brief (10 min)
 
